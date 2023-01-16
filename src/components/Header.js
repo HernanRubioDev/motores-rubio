@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = ()=>{
   return(
-    <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">Motores-Rubio</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -17,9 +17,7 @@ const Header = ()=>{
           <div className="offcanvas-body">
             {localStorage.token ?
             <ul className="navbar-nav  justify-content-start align-items-center flex-grow-1 pe-3" >
-              <li className="nav-item">
-                <a className="nav-link d-none d-lg-block" href="#">Buscar</a>
-              </li>
+              <li className='nav-item'><Link className='nav-link d-none d-lg-block' to='/search'>Buscar</Link></li>
               <li className="nav-item dropdown d-none d-lg-block" >
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Nuevo
@@ -55,9 +53,9 @@ const Header = ()=>{
                   </a>
                   <div className="collapse" id="collapseExample2">
                   <div className="card card-body container-fluid">
-                    <li><a className="dropdown-item m-1 text-secondary" href="#">Monofásico</a></li>
-                    <li><a className="dropdown-item m-1 text-secondary" href="#">Trifásico</a></li>
-                    <li><a className="dropdown-item m-1 text-secondary" href="#">Lavarropas Automatico</a></li>
+                    <li><Link className='dropdown-item m-1 text-secondary' to='/new/monophasic'>Monofásico</Link></li>
+                    <li><Link className='dropdown-item m-1 text-secondary' to='/new/triphasic'>Trifásico</Link></li>
+                    <li><Link className='dropdown-item m-1 text-secondary' to='/new/washer'>Lavarropas Automático</Link></li>
                   </div>
                 </div>
               </div>
