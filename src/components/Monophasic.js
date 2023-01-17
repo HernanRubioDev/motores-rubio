@@ -15,7 +15,7 @@ const Monophasic = ()=>{
     owner:'',
     slots:'',
     large:'',
-    startType:'plaqueta',
+    startType:'',
     uf:'',
     workSteps:'',
     workLaps:'',
@@ -56,7 +56,7 @@ const Monophasic = ()=>{
       </nav>
       <form className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
         <div id="mono-left" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center align-content-center">
-          <div className='col-11 d-flex flex-column flex-wrap h-75 border border-secondary align-content-around '>
+          <div className='col-11 d-flex flex-column flex-wrap h-75 border border-secondary align-content-around'>
               <div className="d-flex align-items-center m-3 w-25">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Marca" name='brand' value={form.brand}/>
               </div>
@@ -86,6 +86,7 @@ const Monophasic = ()=>{
               </div>
               <div className="d-flex align-items-center m-3 w-25">
                 <select onChange={(e)=>handleChange(e)} className="form-select border-secondary" id="inputGroupSelect01" name='startType' value={form.startType}>
+                  <option value="" disabled defaultChecked>Tipo de Arranque</option>
                   <option value="plaqueta">Plaqueta</option>
                   <option value="condesandor">Condesador</option>
                 </select>

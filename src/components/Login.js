@@ -28,7 +28,7 @@ const Login = ()=>{
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
       <form className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-3 bg-white rounded-1">
-        <legend className="text-center w-100 border-bottom pb-3 fs-4 fw-semibold">Ingresar</legend>
+        <legend className="text-center w-100 border-bottom pb-3 fs-4 fw-semibold ">Ingresar</legend>
         <div className="mb-3 pt-3">
           <div className="d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" className="bi bi-person" viewBox="0 0 16 16">

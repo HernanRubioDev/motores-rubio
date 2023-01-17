@@ -13,7 +13,7 @@ const Register = ()=>{
   const validateForm = (form)=>{
     const errors ={}
     const user_regEx = /^[a-z0-9_-]{5,16}/igm;
-    const email_regEx = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+    const email_regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const pass_regEx = /^(?=.*\d)(?=.*[!@#$%_^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     switch (true) {
       case !form.username.trim():
