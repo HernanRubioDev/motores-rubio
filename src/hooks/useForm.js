@@ -23,7 +23,7 @@ const useForm = (initialForm, validateForm)=>{
     e.preventDefault();
     switch (e.target.name) {
       case 'register':
-        registerUser(form);
+        registerUser(form, setErrors);
         break;
 
       case 'login':

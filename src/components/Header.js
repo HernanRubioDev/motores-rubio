@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useApi from '../hooks/useApi';
+
 
 const Header = ()=>{
+  const {logoutUser} = useApi();
   return(
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -46,7 +49,7 @@ const Header = ()=>{
                     <li><a className="dropdown-item" href="#">Configuracion</a></li>
                     <li><a className="dropdown-item" href="#">Ayuda</a></li>
                     <li><hr className="dropdown-divider" /></li>
-                    <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary">Salir</button></li>
+                    <li><button onClick={()=>logoutUser()} type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary">Salir</button></li>
                   </ul>
                 </li>
                 <div className='container-fluid d-lg-none d-flex flex-column align-items-center border-top'>
@@ -66,7 +69,7 @@ const Header = ()=>{
            
                 <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary d-lg-none">Configuracion</button></li>
                 <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary d-lg-none">Ayuda</button></li>
-                <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-danger d-lg-none">Salir</button></li>
+                <li><button onClick={()=>logoutUser} type="button" className="btn btn-link text-decoration-none fw-semibold text-danger d-lg-none">Salir</button></li>
               </div>
               </>
                 

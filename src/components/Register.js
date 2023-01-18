@@ -57,7 +57,6 @@ const Register = ()=>{
 
   const {form, loading, errors, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
 
-
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
       <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-4 bg-white rounded-1">
