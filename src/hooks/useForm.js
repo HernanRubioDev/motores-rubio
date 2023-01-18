@@ -1,9 +1,12 @@
 import { useState } from "react"
+import useApi from "./useApi";
 
 const useForm = (initialForm, validateForm)=>{
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  
+  const {registerUser, loginUser} = useApi();
 
   const handleChange = (e)=>{
     setForm(
@@ -17,7 +20,31 @@ const useForm = (initialForm, validateForm)=>{
   }
 
   const handleSubmit = (e)=>{
+    e.preventDefault();
+    switch (e.target.name) {
+      case 'register':
+        registerUser(form);
+        break;
 
+      case 'login':
+        loginUser(form);
+        break;
+
+      case 'monophasic':
+      break;
+
+      case 'triphasic':
+      break;
+
+      case 'washer':
+      break;
+
+      case 'search':
+      break;
+
+      default:
+        break;
+    }
   }
 
   return {form, loading, errors, handleChange, handleBlur,handleSubmit}

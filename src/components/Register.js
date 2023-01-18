@@ -60,7 +60,7 @@ const Register = ()=>{
 
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
-      <form className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-4 bg-white rounded-1">
+      <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-4 bg-white rounded-1">
         <legend className="text-center w-100 border-bottom pb-3 fs-3 fw-semibold">Registrarse</legend>
         <div className="mb-3 pt-3">
           <div className="d-flex align-items-center">
