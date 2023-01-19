@@ -69,7 +69,7 @@ const Header = ()=>{
            
                 <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary d-lg-none">Configuracion</button></li>
                 <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary d-lg-none">Ayuda</button></li>
-                <li><button onClick={()=>logoutUser} type="button" className="btn btn-link text-decoration-none fw-semibold text-danger d-lg-none">Salir</button></li>
+                <li><button onClick={()=>logoutUser()} type="button" className="btn btn-link text-decoration-none fw-semibold text-danger d-lg-none">Salir</button></li>
               </div>
               </>
                 

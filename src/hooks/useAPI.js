@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 
-const useApi = ()=>{
+export const useApi = ()=>{
   const navigate = useNavigate();
   const registerUser = async (form, setErrors)=>{
 
@@ -59,12 +59,33 @@ const useApi = ()=>{
       else{
         console.log('Error')
       }
-    })
+    });
   }
 
   const logoutUser = async ()=>{
-    const auth = await checkUserAuth();
-    
+    const id = await getUserId();  /*Json-Server no permite realizar inserciones/modificaciones si no por medio de un id*/
+    const endpoint = `http://localhost:5000/users/${id}`;
+    const auth = {token: null}
+
+    const options={
+      method:'PATCH',
+      body: JSON.stringify(auth),
+      headers:{
+        "Content-type" : "application/json",
+      }
+    }
+
+    await fetch(endpoint, options)
+    .then((res)=>{
+      if(!res.ok) {
+        console.log('Error en el LogOut');
+      }
+
+      localStorage.removeItem('username')
+      localStorage.removeItem('email')
+      localStorage.removeItem('token')
+      navigate('/login')
+    })
   }
 
   const getUserData = async (form)=>{
@@ -80,6 +101,23 @@ const useApi = ()=>{
     })
 
     return userData[0];
+  }
+
+  const getUserId = async ()=>{ 
+    const token = localStorage.getItem('token');
+    const endpoint = `http://localhost:5000/users?token=${token}`;
+
+    const userData = await fetch (endpoint)
+    .then((res)=>{
+      if(res.ok){
+        return res.json();
+      }
+      else{
+        console.log('Error en getUserId');
+      }
+    })
+
+    return userData[0].id;
   }
 
   const checkUsername = async(form)=>{
@@ -148,6 +186,4 @@ const useApi = ()=>{
   const addNewMotor = (form)=>{}
 
   return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor}
- }
-
-export default useApi;
+ } 
