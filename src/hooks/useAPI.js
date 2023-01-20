@@ -3,18 +3,20 @@ import {v4 as uuidv4} from 'uuid';
 
 export const useApi = ()=>{
   const navigate = useNavigate();
-  const registerUser = async (form, setErrors)=>{
-
+  const registerUser = async (form, setErrors, setLoading, setResponse, openModal)=>{
+    setLoading(true);
     const userError = await checkUsername(form);
     const emailError = await checkEmail(form);
-
+    
     if (Object.keys(userError).length !== 0){
       setErrors(userError);
+      setLoading(false);
       return
     }
     
     if (Object.keys(emailError).length !== 0){
       setErrors(emailError);
+      setLoading(false);
       return
     }
     
@@ -29,15 +31,28 @@ export const useApi = ()=>{
     }
     await fetch(endpoint,options)
     .then((res)=>{
-      if(res.ok){}
+      if(res.ok){
+        setResponse('Tu cuenta ah sido creada con éxito')
+        openModal();
+      }
       else{
-        console.log('Error')
+        setResponse('Ups...parece que hubo un error. :(')
+        openModal();
       }
     })
+    setLoading(false)
   } 
 
-  const loginUser = async (form)=>{
-    const userData = await getUserData(form);
+  const loginUser = async (form, setLoading, setErrors)=>{
+    setLoading(true)
+    const userData = await getUserData(form)
+    if(userData === undefined){
+      const error = {login:'El usuario o la conraseña son incorrectos'}
+      setErrors(error);
+      setLoading(false)
+      return
+    }
+
     const endpoint = `http://localhost:5000/users/${userData.id}`;
     const auth = {token: Date.now()}
     const options={
@@ -54,10 +69,12 @@ export const useApi = ()=>{
         localStorage.setItem('username', form.username);
         localStorage.setItem('token', auth.token);
         localStorage.setItem('email', userData.email)
+        setLoading(false)
         navigate('/')
       }
       else{
         console.log('Error')
+        setLoading(false)
       }
     });
   }
@@ -90,17 +107,21 @@ export const useApi = ()=>{
 
   const getUserData = async (form)=>{
     const endpoint = `http://localhost:5000/users?username=${form.username}&password=${form.password}`;
-    const userData = await fetch(endpoint)
+    let userData;
+    await fetch(endpoint)
     .then((res)=>{
       if(res.ok){
         return res.json();
       }
       else{
-        console.log('Error en getUserData');
+        console.log('Error')
       }
     })
+    .then((data)=>{ 
+      userData = data[0]
+    });
 
-    return userData[0];
+    return userData;
   }
 
   const getUserId = async ()=>{ 

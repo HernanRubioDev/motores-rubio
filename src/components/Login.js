@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useForm from '../hooks/useForm';
-import Modal from "./Modal";
+import Loader from "./Loader";
 
 const Login = ()=>{
 
@@ -23,9 +23,7 @@ const Login = ()=>{
     }
     return errors
   }
-  const {form, loading, errors, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
-
-
+  const {form, loading, errors, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
       <form onSubmit={(e)=>handleSubmit(e)} name="login" className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-3 bg-white rounded-1">
@@ -50,11 +48,13 @@ const Login = ()=>{
           <div id="passwordLogin" className="form-text text-danger text-end">{errors.password}</div>
         </div>
         <div className="d-flex flex-column justify-content-evenly align-items-center">
+          {errors ? <p className="text-danger">{errors.login}</p> : ''}
         {Object.keys(errors).length === 0 ?
           <button type="submit" className="btn btn-primary w-100">Ingresar</button>
           :
           <button type="submit" className="btn btn-primary w-100" disabled>Ingresar</button>
         }
+        {loading ? <Loader /> : ''}
         <div className="form-text text-secondary d-flex justify-content-center fs-6">¿Aún no tienes cuenta? <Link className="text-decoration-none text-primary ms-1 fs-6" to='/register'>¡Registrate!</Link></div>
         </div>
       </form>

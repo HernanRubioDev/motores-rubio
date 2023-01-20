@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
-import { useModal } from "../hooks/useModal";
+import Loader from "./Loader";
 import Modal from "./Modal";
 
 const Register = ()=>{
@@ -45,39 +45,42 @@ const Register = ()=>{
       case form.password.length < 8 || form.password.length > 20:
         errors.password = 'La contraseña debe contenter entre 8 y 20 carácteres.';
         break
-
-      case !pass_regEx.test(form.password):
-        errors.password = 'La contraseña debe contener al menos un numero, una letra y un caracter especial';
-        break
-
-      case form.rePassword.trim() !== form.password.trim():
-        errors.rePassword='Las contraseñas no coinciden';
-        break
-    }
+        
+        case !pass_regEx.test(form.password):
+          errors.password = 'La contraseña debe contener al menos un numero, una letra y un caracter especial';
+          break
+          
+          case form.rePassword.trim() !== form.password.trim():
+            errors.rePassword='Las contraseñas no coinciden';
+            break
+          }
     return errors
   }
-
-  const {form, loading, errors, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
-  const {isOpen, openModal, closeModal} = useModal();
+  
+  const {form, loading, errors,response ,handleChange, handleBlur, handleSubmit, isOpen, closeModal} = useForm(initialForm, validateForm);
+  const navigate = useNavigate()
 
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
-      <Modal isOpen={isOpen} title={'¡Bienvenido!'} paragraph={'Tu cuenta ah sido creada con exito.'}>
+      {response ? <Modal isOpen={isOpen}>
         <div className="modal-dialog bg-white w-25 p-3">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title fw-bold fs-3">¡Bienvenido!</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 className="modal-title fw-bold fs-3">{Object.keys(errors) !== 0 ? 'Bienvendio' : 'Error'}</h5>
+              <button onClick={closeModal} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <p className='fs-5'>Tu cuenta ha sido creada con exito.</p>
+              <p className='fs-5'>{response}</p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary w-25">Ingresar</button>
+              <button onClick={()=>navigate('/login')} type="button" className="btn btn-primary w-25">Ingresar</button>
             </div>
           </div>
         </div>
       </Modal>
+      :
+      ''}
+      
       <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-4 bg-white rounded-1">
         <legend className="text-center w-100 border-bottom pb-3 fs-3 fw-semibold">Registrarse</legend>
         <div className="mb-3 pt-3">
@@ -124,6 +127,7 @@ const Register = ()=>{
           :
           <button type="submit" className="btn btn-primary w-100" disabled>Registrarse</button>
         }
+        {loading ? <Loader /> : ''}
         <div className="form-text text-secondary d-flex justify-content-center w-100 fs-6">¿tienes cuenta? <Link className="text-decoration-none text-primary ms-1 fs-6" to='/login'>Ingresa!</Link></div>
         </div>
       </form>

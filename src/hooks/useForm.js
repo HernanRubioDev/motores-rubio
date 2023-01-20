@@ -1,13 +1,15 @@
 import { useState } from "react"
 import {useApi} from "../hooks/useApi";
+import { useModal } from "./useModal";
 
 const useForm = (initialForm, validateForm)=>{
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState(null);
   
   const {registerUser, loginUser} = useApi();
-
+  const {isOpen, closeModal, openModal} = useModal();
   const handleChange = (e)=>{
     setForm(
       {...form, [e.target.name]: e.target.value,}
@@ -23,11 +25,11 @@ const useForm = (initialForm, validateForm)=>{
     e.preventDefault();
     switch (e.target.name) {
       case 'register':
-        registerUser(form, setErrors);
+        registerUser(form, setErrors, setLoading, setResponse, openModal);
         break;
 
       case 'login':
-        loginUser(form);
+        loginUser(form, setLoading, setErrors);
         break;
 
       case 'monophasic':
@@ -47,7 +49,7 @@ const useForm = (initialForm, validateForm)=>{
     }
   }
 
-  return {form, loading, errors, handleChange, handleBlur,handleSubmit}
+  return {form, loading, errors, response, handleChange, handleBlur,handleSubmit, isOpen, closeModal}
 }
 
 export default useForm;
