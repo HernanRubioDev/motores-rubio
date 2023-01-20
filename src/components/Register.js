@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import useForm from "../hooks/useForm";
+import { useModal } from "../hooks/useModal";
+import Modal from "./Modal";
 
 const Register = ()=>{
 
@@ -56,9 +58,26 @@ const Register = ()=>{
   }
 
   const {form, loading, errors, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
+  const {isOpen, openModal, closeModal} = useModal();
 
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
+      <Modal isOpen={isOpen} title={'¡Bienvenido!'} paragraph={'Tu cuenta ah sido creada con exito.'}>
+        <div className="modal-dialog bg-white w-25 p-3">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title fw-bold fs-3">¡Bienvenido!</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <p className='fs-5'>Tu cuenta ha sido creada con exito.</p>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary w-25">Ingresar</button>
+            </div>
+          </div>
+        </div>
+      </Modal>
       <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-4 bg-white rounded-1">
         <legend className="text-center w-100 border-bottom pb-3 fs-3 fw-semibold">Registrarse</legend>
         <div className="mb-3 pt-3">

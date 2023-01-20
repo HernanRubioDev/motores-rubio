@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useForm from '../hooks/useForm';
+import Modal from "./Modal";
 
 const Login = ()=>{
 
@@ -57,6 +58,7 @@ const Login = ()=>{
         <div className="form-text text-secondary d-flex justify-content-center fs-6">¿Aún no tienes cuenta? <Link className="text-decoration-none text-primary ms-1 fs-6" to='/register'>¡Registrate!</Link></div>
         </div>
       </form>
+
     </section>
   );
 }
