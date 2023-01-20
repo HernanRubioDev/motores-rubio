@@ -194,13 +194,14 @@ export const useApi = ()=>{
       }
       else{
         console.log('Error en checkUserAuth.')
+        auth = false;
       }
     })
     .then((data)=>{
       if(data[0].token == token) auth = true
       else auth = false
-    });
-
+    })
+  //agregar el catch
     return auth
   }
 

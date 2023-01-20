@@ -7,6 +7,7 @@ import Monophasic from './Monophasic';
 import Triphasic from './Triphasic';
 import Washer from './Washer';
 import Search from './Search';
+import PrivateRoute from './PrivateRoute';
 const MotoresRubio = ()=>{
   return(
     <main className="motores-rubio d-flex flex-column">
@@ -15,7 +16,7 @@ const MotoresRubio = ()=>{
         <Routes>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
-          <Route path='/new/monophasic' element={<Monophasic />}/>
+          <Route path='/new/monophasic' element={<PrivateRoute path='/login'><Monophasic /></PrivateRoute>}/>
           <Route path='/new/triphasic' element={<Triphasic />}/>
           <Route path='/new/washer' element={<Washer />}/>
           <Route path='/search' element={<Search />}/>
