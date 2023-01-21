@@ -183,8 +183,7 @@ export const useApi = ()=>{
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     let auth = null;
-    
-    console.log(localStorage.getItem('token'));
+  
     const endpoint = `http://localhost:5000/users?username=${username}&token=${token}`
 
     await fetch(endpoint)
@@ -198,7 +197,7 @@ export const useApi = ()=>{
       }
     })
     .then((data)=>{
-      if(data[0].token == token) auth = true
+      if(data.length !== 0) auth = true
       else auth = false
     })
   //agregar el catch

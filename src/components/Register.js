@@ -63,17 +63,17 @@ const Register = ()=>{
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
       {response ? <Modal isOpen={isOpen}>
-        <div className="modal-dialog bg-white w-25 p-3">
+        <div className="modal-dialog bg-white p-3">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title fw-bold fs-3">{Object.keys(errors) !== 0 ? 'Bienvendio' : 'Error'}</h5>
+              <h5 className="modal-title fw-bold fs-3">{Object.keys(errors) !== 0 ? '¡Bienvendio!' : 'Error'}</h5>
               <button onClick={closeModal} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
               <p className='fs-5'>{response}</p>
             </div>
             <div className="modal-footer">
-              <button onClick={()=>navigate('/login')} type="button" className="btn btn-primary w-25">Ingresar</button>
+              <button onClick={()=>navigate('/login')} type="button" className="btn btn-primary ">Ingresar</button>
             </div>
           </div>
         </div>
@@ -81,7 +81,7 @@ const Register = ()=>{
       :
       ''}
       
-      <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-4 bg-white rounded-1">
+      <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-7 col-md-6 col-lg-5 col-xl-4 bg-white rounded-1">
         <legend className="text-center w-100 border-bottom pb-3 fs-3 fw-semibold">Registrarse</legend>
         <div className="mb-3 pt-3">
           <div className="d-flex align-items-center">

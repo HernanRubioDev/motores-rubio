@@ -17,9 +17,9 @@ const MotoresRubio = ()=>{
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/new/monophasic' element={<PrivateRoute path='/login'><Monophasic /></PrivateRoute>}/>
-          <Route path='/new/triphasic' element={<Triphasic />}/>
-          <Route path='/new/washer' element={<Washer />}/>
-          <Route path='/search' element={<Search />}/>
+          <Route path='/new/triphasic' element={<PrivateRoute path='/login'><Triphasic /></PrivateRoute>}/>
+          <Route path='/new/washer' element={<PrivateRoute path='/login'><Washer /></PrivateRoute>}/>
+          <Route path='/search' element={<PrivateRoute path='/login'><Search /></PrivateRoute>}/>
         </Routes>
       </Router>
     </main>
