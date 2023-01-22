@@ -34,6 +34,7 @@ export const useApi = ()=>{
       if(res.ok){
         setResponse('Tu cuenta ah sido creada con éxito')
         openModal();
+         registerUserMotors(form);
       }
       else{
         setResponse('Ups...parece que hubo un error. :(')
@@ -42,6 +43,22 @@ export const useApi = ()=>{
     })
     setLoading(false)
   } 
+
+  const registerUserMotors = async(form)=>{
+    const endpoint = `http://localhost:5000/motors`;
+    const newUser ={}
+    newUser.id = form.id;
+    newUser.motors = []
+    const options={
+      method:'POST',
+      body: JSON.stringify(newUser),
+      headers:{
+        "Content-type" : "application/json",
+      }
+    }
+    await fetch(endpoint,options)
+    .then(res => console.log(res))
+}
 
   const loginUser = async (form, setLoading, setErrors)=>{
     setLoading(true)

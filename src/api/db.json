@@ -6,15 +6,20 @@
       "password": "Hr_224426628815",
       "rePassword": "Hr_224426628815",
       "id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
-      "token": null
+      "token": 1674343190966
     },
     {
       "username": "ignacio",
       "email": "ignaciogrubio@hotmail.com",
       "password": "Hr_123456",
       "rePassword": "Hr_123456",
-      "id": "9fb9ac2d-0893-479d-a4b4-1ec4ac9cfcff"
+      "id": "b13f6324-ad4b-49ea-a4a7-7851d2d73970"
     }
   ],
-  "motors": []
+  "motors": [
+    {
+      "id": "b13f6324-ad4b-49ea-a4a7-7851d2d73970",
+      "motors": []
+    }
+  ]
 }
