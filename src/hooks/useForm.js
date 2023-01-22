@@ -1,5 +1,5 @@
 import { useState } from "react"
-import {useApi} from "../hooks/useApi";
+import {useApi} from "./useApi";
 import { useModal } from "./useModal";
 
 const useForm = (initialForm, validateForm)=>{
@@ -8,7 +8,7 @@ const useForm = (initialForm, validateForm)=>{
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   
-  const {registerUser, loginUser} = useApi();
+  const {registerUser, loginUser, addNewMotor} = useApi();
   const {isOpen, closeModal, openModal} = useModal();
   const handleChange = (e)=>{
     setForm(
@@ -33,12 +33,15 @@ const useForm = (initialForm, validateForm)=>{
         break;
 
       case 'monophasic':
+        addNewMotor(form, setLoading);
       break;
 
       case 'triphasic':
+        addNewMotor(form, setLoading);
       break;
 
       case 'washer':
+        addNewMotor(form, setLoading);
       break;
 
       case 'search':

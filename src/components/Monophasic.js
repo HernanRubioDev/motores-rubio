@@ -31,8 +31,7 @@ const Monophasic = ()=>{
   const [activeBtn, setActiveBtn] = useState('mono-left__link');
 
   const {changeActive} = useActive();
-  const {handleChange, form} = useForm(initialForm);
-
+  const {handleChange, handleSubmit, form} = useForm(initialForm);
   const handleActive = (e)=>{
     changeActive(e, activeBtn, setActiveBtn);
   }
@@ -54,7 +53,7 @@ const Monophasic = ()=>{
         </li>
       </ul>
       </nav>
-      <form className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
+      <form onSubmit={(e)=>handleSubmit(e)} name='monophasic' className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
         <div id="mono-left" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center align-content-center">
           <div className='col-11 d-flex flex-column flex-wrap h-75 border border-secondary align-content-around'>
               <div className="d-flex align-items-center m-3 w-25">
@@ -143,7 +142,7 @@ const Monophasic = ()=>{
               <textarea onChange={(e)=>handleChange(e)} className="form-control h-100 border-secondary" placeholder="Leave a comment here" id="floatingTextarea" name='observations' value={form.observations}></textarea>
               <label htmlFor="floatingTextarea">Observaciones</label>
             </div>
-            <button type="button" className="btn btn-primary col-6 col-lg-4">Guardar</button>
+            <button type="submit" className="btn btn-primary col-6 col-lg-4">Guardar</button>
           </div>
         </div>
       </form>

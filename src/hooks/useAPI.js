@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 
 export const useApi = ()=>{
@@ -34,7 +34,7 @@ export const useApi = ()=>{
       if(res.ok){
         setResponse('Tu cuenta ah sido creada con éxito')
         openModal();
-         registerUserMotors(form);
+        registerUserMotors(form);
       }
       else{
         setResponse('Ups...parece que hubo un error. :(')
@@ -48,7 +48,9 @@ export const useApi = ()=>{
     const endpoint = `http://localhost:5000/motors`;
     const newUser ={}
     newUser.id = form.id;
-    newUser.motors = []
+    newUser.motors = [
+
+    ]
     const options={
       method:'POST',
       body: JSON.stringify(newUser),
@@ -221,7 +223,23 @@ export const useApi = ()=>{
     return auth
   }
 
-  const addNewMotor = (form)=>{}
+  const addNewMotor = async(form, setLoading)=>{
+    const auth = await checkUserAuth();
+    if(!auth) return
+    const id = localStorage.getItem('id');
+    const endpoint = `http://localhost:5000/motors/${id}/motors`;
+    
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(form),
+      headers:{
+        "Content-type" : "Application/Json",
+      }
+    }
+    await fetch(endpoint, options).then((res)=>{
+      console.log(res);
+    })
+  }
 
   return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor}
  } 
