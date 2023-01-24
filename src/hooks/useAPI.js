@@ -34,7 +34,6 @@ export const useApi = ()=>{
       if(res.ok){
         setResponse('Tu cuenta ah sido creada con éxito')
         openModal();
-        registerUserMotors(form);
       }
       else{
         setResponse('Ups...parece que hubo un error. :(')
@@ -43,24 +42,6 @@ export const useApi = ()=>{
     })
     setLoading(false)
   } 
-
-  const registerUserMotors = async(form)=>{
-    const endpoint = `http://localhost:5000/motors`;
-    const newUser ={}
-    newUser.id = form.id;
-    newUser.motors = [
-
-    ]
-    const options={
-      method:'POST',
-      body: JSON.stringify(newUser),
-      headers:{
-        "Content-type" : "application/json",
-      }
-    }
-    await fetch(endpoint,options)
-    .then(res => console.log(res))
-}
 
   const loginUser = async (form, setLoading, setErrors)=>{
     setLoading(true)
@@ -224,11 +205,14 @@ export const useApi = ()=>{
   }
 
   const addNewMotor = async(form, setLoading)=>{
+    setLoading(true);
     const auth = await checkUserAuth();
     if(!auth) return
-    const id = localStorage.getItem('id');
-    const endpoint = `http://localhost:5000/motors/${id}/motors`;
-    
+    const id = await getUserId();
+    form.user_id = id;
+    form.id = uuidv4();
+    const endpoint = `http://localhost:5000/motors`;
+
     const options = {
       method: 'POST',
       body: JSON.stringify(form),
@@ -237,9 +221,29 @@ export const useApi = ()=>{
       }
     }
     await fetch(endpoint, options).then((res)=>{
-      console.log(res);
+      if(!res.ok){
+
+        throw new Error('Error');
+      }
+      setLoading(false);
     })
+    .catch((err)=> {
+        setLoading(false);
+      console.error(err)});
   }
 
-  return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor}
+  const getAllMotors = async ()=>{
+    const id = await  getUserId();
+    const endpoint = `http://localhost:5000/motors?user_id=${id}`;
+
+    await fetch(endpoint)
+    .then((res)=>{
+      if(!res) throw new Error('Error')
+      return res.json();
+    })
+    .then((data)=>console.log(data))
+    .catch(err => console.error(err));
+  }
+
+  return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getAllMotors}
  } 

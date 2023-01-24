@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useActive from '../hooks/useActive';
 import useForm from '../hooks/useForm';
+import Loader from './Loader';
 
 const Washer = ()=>{
 
@@ -38,7 +39,7 @@ const Washer = ()=>{
 
   const [activeBtn, setActiveBtn] = useState('washer-left__link');
   const {changeActive} = useActive();
-  const {handleChange, form} = useForm(initialForm);
+  const {handleChange, form, handleSubmit, loading} = useForm(initialForm);
 
   const handleActive = (e)=>{
     changeActive(e, activeBtn, setActiveBtn);
@@ -60,7 +61,7 @@ return(
         </li>
       </ul>
       </nav>
-      <form className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
+      <form onSubmit={(e)=>handleSubmit(e)} name='washer' className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
         <div id="washer-left" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center align-content-center">
           <div className='col-11 d-flex flex-wrap h-50 border border-secondary justify-content-evenly '>
               <div className="d-flex align-items-center m-2 w-25">
@@ -180,7 +181,10 @@ return(
               <textarea onChange={(e)=>handleChange(e)} className="form-control border-secondary h-100" placeholder="Leave a comment here" id="floatingTextarea" name='observations' value={form.observations}></textarea>
               <label htmlFor="floatingTextarea">Observaciones</label>
             </div>
-            <button type="button" className="btn btn-primary w-25">Guardar</button>
+            {loading ? <Loader />
+            :
+            <button type="submit" className="btn btn-primary col-6 col-lg-4">Guardar</button>
+            }
           </div>
         </div>
       </form>

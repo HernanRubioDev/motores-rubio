@@ -1,3 +1,4 @@
+import { useApi } from "../hooks/useApi";
 import useForm from "../hooks/useForm";
 
 const Search = ()=>{
@@ -17,10 +18,12 @@ const Search = ()=>{
   }
 
   const {handleChange, form} = useForm(initialForm);
+  const {getAllMotors} = useApi();
   return(
-    <section className="d-flex p-3 container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
+    <section className="d-flex flex-column p-3 container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
+      <h3 className="text-secondary fw-bold">Buscar</h3>
       <div className="w-75 h-100 border border-secondary bg-white d-flex flex-column align-items-center justify-content-between box-shadow">
-        <form className=" w-100 h-75 d-flex align-items-center justify-content-evenly flex-wrap overflow-hidden px-3">
+        <form className=" w-100 h-75 d-flex flex-wrap overflow-hidden px-3 m-3 align-items-start">
           <div className="d-flex h-50 w-75 border border-secondary border-end-0 flex-wrap align-items-center justify-content-evenly">
               <div className="d-flex align-items-center m-2 w-25">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Marca" name='brand' value={form.brand}/>
@@ -69,7 +72,7 @@ const Search = ()=>{
           </div>
           <div className="w-100 d-flex align-items-center justify-content-evenly">
           <button type="button" className="btn btn-primary w-25">Buscar Motor</button>
-          <button type="button" className="btn btn-primary w-25">Ver Todos</button>
+          <button onClick={()=>getAllMotors()} type="button" className="btn btn-primary w-25">Ver Todos</button>
           <button type="button" className="btn btn-primary w-25">Nueva Busqueda</button>
           </div>
         </form>
