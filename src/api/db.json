@@ -14,10 +14,34 @@
       "password": "Hr_224426628815",
       "rePassword": "Hr_224426628815",
       "id": "a921788f-7416-46ba-950b-1d94e03c61c2",
-      "token": 1674414493209
+      "token": null
     }
   ],
   "motors": [
-    
+    {
+      "brand": "marca",
+      "rpm": "rpm",
+      "minorDim": "",
+      "model": "",
+      "hp": "",
+      "majorDim": "",
+      "owner": "",
+      "slots": "",
+      "large": "",
+      "startType": "",
+      "uf": "",
+      "workSteps": "",
+      "workLaps": "",
+      "workWire": "",
+      "startSteps": "",
+      "startLaps": "",
+      "startWire": "",
+      "voltage": "",
+      "connection": "",
+      "windingType": "",
+      "observations": "",
+      "user_id": "a921788f-7416-46ba-950b-1d94e03c61c2",
+      "id": "2e61e3ff-1899-40bf-98d3-908b8120d0f9"
+    }
   ]
 }

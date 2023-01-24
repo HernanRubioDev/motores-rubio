@@ -8,7 +8,7 @@ const useForm = (initialForm, validateForm)=>{
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   
-  const {registerUser, loginUser, addNewMotor} = useApi();
+  const {registerUser, loginUser, addNewMotor, getMotor} = useApi();
   const {isOpen, closeModal, openModal} = useModal();
   const handleChange = (e)=>{
     setForm(
@@ -45,6 +45,7 @@ const useForm = (initialForm, validateForm)=>{
       break;
 
       case 'search':
+        getMotor(form);
       break;
 
       default:
