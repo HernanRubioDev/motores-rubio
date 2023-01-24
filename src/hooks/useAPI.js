@@ -1,5 +1,6 @@
 import {useNavigate } from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
+import { createEndpoint, dinamicEndpoint } from '../scripts/dinamicEndpoint';
 
 export const useApi = ()=>{
   const navigate = useNavigate();
@@ -249,19 +250,15 @@ export const useApi = ()=>{
     const {brand, model, owner, rpm, hp, slots, majorDim, minorDim, large, motorType, startType} = form;
     const id = await getUserId();
     let endpoint = `http://localhost:5000/motors?user_id=${id}`;
-    Object.entries(form).forEach(([key, value]) => {
-      if (value !== '') {
-        endpoint += `&${key}=${value}`;
-      }
-    });
-
+    endpoint = dinamicEndpoint(form, endpoint);
+    
     await fetch(endpoint)
     .then((res)=>{
       if(!res.ok) throw new Error('Error en getMotor');
       else return res.json();
     })
     .then(data => console.table(data))
-    .catch(err => console.error(err));
+    .catch(err => console.error(err)); 
   }
 
   return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getAllMotors, getMotor}

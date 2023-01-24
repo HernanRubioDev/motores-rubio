@@ -6,7 +6,7 @@
       "password": "Hr_224426628815",
       "rePassword": "Hr_224426628815",
       "id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
-      "token": null
+      "token": 1674600548653
     },
     {
       "username": "ignacio",
@@ -42,6 +42,31 @@
       "observations": "",
       "user_id": "a921788f-7416-46ba-950b-1d94e03c61c2",
       "id": "2e61e3ff-1899-40bf-98d3-908b8120d0f9"
+    },
+    {
+      "brand": "marca",
+      "rpm": "rpm",
+      "minorDim": "",
+      "model": "",
+      "hp": "",
+      "majorDim": "",
+      "owner": "",
+      "slots": "",
+      "large": "",
+      "startType": "",
+      "uf": "",
+      "workSteps": "",
+      "workLaps": "",
+      "workWire": "",
+      "startSteps": "",
+      "startLaps": "",
+      "startWire": "",
+      "voltage": "",
+      "connection": "",
+      "windingType": "",
+      "observations": "",
+      "user_id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
+      "id": "c74eb439-6950-4672-81a6-b9f07f3922c6"
     }
   ]
 }
