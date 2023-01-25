@@ -233,33 +233,18 @@ export const useApi = ()=>{
       console.error(err)});
   }
 
-  const getAllMotors = async ()=>{
-    const id = await  getUserId();
-    const endpoint = `http://localhost:5000/motors?user_id=${id}`;
-
-    await fetch(endpoint)
-    .then((res)=>{
-      if(!res) throw new Error('Error')
-      return res.json();
-    })
-    .then((data)=>console.log(data))
-    .catch(err => console.error(err));
-  }
-
   const getMotor = async (form)=>{
-    const {brand, model, owner, rpm, hp, slots, majorDim, minorDim, large, motorType, startType} = form;
     const id = await getUserId();
     let endpoint = `http://localhost:5000/motors?user_id=${id}`;
     endpoint = dinamicEndpoint(form, endpoint);
-    
-    await fetch(endpoint)
+    let data = await fetch(endpoint)
     .then((res)=>{
       if(!res.ok) throw new Error('Error en getMotor');
       else return res.json();
     })
-    .then(data => console.table(data))
-    .catch(err => console.error(err)); 
+    .catch(err => console.error(err));
+    return data; 
   }
 
-  return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getAllMotors, getMotor}
+  return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getMotor}
  } 
