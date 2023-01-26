@@ -49,15 +49,15 @@ return(
     <h3 className='fs-2 fw-bold text-secondary'>Nuevo Lavarropas Automático</h3>
     <div className="w-75 h-75 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow">
       <nav className="w-100 d-flex flex-nowrap flex-row justify-content-evenly list-group">
-      <ul className="nav nav-pills w-100">  
+      <ul className="nav nav-pills w-100 bg-dark">  
         <li className="nav-item border border-secondary border-start-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 active pressed-btn" href="#washer-left" id="washer-left__link">Primero</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold active pressed-btn" href="#washer-left" id="washer-left__link">Primero</a>
         </li>
         <li className="nav-item border border-secondary border-start-0 border-end-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0" href="#washer-center" id="washer-center__link">Segundo</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold" href="#washer-center" id="washer-center__link">Segundo</a>
         </li>
         <li className="nav-item border border-secondary border-end-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0" href="#washer-right" id="washer-right__link">Tercero</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold" href="#washer-right" id="washer-right__link">Tercero</a>
         </li>
       </ul>
       </nav>
