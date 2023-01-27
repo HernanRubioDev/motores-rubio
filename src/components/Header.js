@@ -53,7 +53,7 @@ const Header = ()=>{
                   </ul>
                 </li>
                 <div className='container-fluid d-lg-none d-flex flex-column align-items-center border-top'>
-                  <li><button type="button" className="btn btn-link text-decoration-none fw-semibold text-secondary d-lg-none">Buscar</button></li>
+                  <li><Link to='/search' className="btn btn-link text-decoration-none fw-semibold text-secondary d-lg-none">Buscar</Link></li>
                   <a className="nav-link dropdown-toggle fw-semibold text-secondary" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
                     Nuevo Motor
                   </a>

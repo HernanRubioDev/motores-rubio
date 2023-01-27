@@ -7,7 +7,7 @@ const useForm = (initialForm, validateForm)=>{
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
-  const {registerUser, loginUser, addNewMotor, getMotor} = useApi();
+  const {registerUser, loginUser, addNewMotor} = useApi();
   const {isOpen, closeModal, openModal} = useModal();
   const handleChange = (e)=>{
     setForm(

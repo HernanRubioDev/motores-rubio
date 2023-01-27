@@ -6,7 +6,7 @@
       "password": "Hr_224426628815",
       "rePassword": "Hr_224426628815",
       "id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
-      "token": 1674743402253
+      "token": null
     },
     {
       "username": "ignacio",
@@ -14,6 +14,14 @@
       "password": "Hr_224426628815",
       "rePassword": "Hr_224426628815",
       "id": "a921788f-7416-46ba-950b-1d94e03c61c2",
+      "token": null
+    },
+    {
+      "username": "gabriel",
+      "email": "elgabo01@hotmail.com",
+      "password": "Hr_123456",
+      "rePassword": "Hr_123456",
+      "id": "11086971-4c5f-4c49-8dc3-41a7f0499d0f",
       "token": null
     }
   ],
@@ -396,31 +404,6 @@
       "observations": "",
       "user_id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
       "id": "39eee5d2-53b4-4d29-bf9d-9ff740e9577e"
-    },
-    {
-      "brand": "Czerweni",
-      "rpm": "",
-      "minorDim": "160",
-      "model": "",
-      "hp": "",
-      "majorDim": "80",
-      "owner": "Pasti",
-      "slots": "",
-      "large": "180",
-      "startType": "",
-      "uf": "",
-      "workSteps": "",
-      "workLaps": "",
-      "workWire": "",
-      "startSteps": "",
-      "startLaps": "",
-      "startWire": "",
-      "voltage": "",
-      "connection": "",
-      "windingType": "",
-      "observations": "",
-      "user_id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
-      "id": "2eb7e9e5-fa20-4319-9b42-fd529bb75215"
     }
   ]
 }

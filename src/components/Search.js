@@ -96,7 +96,7 @@ const Search = ()=>{
               </tr>
             </thead>
             <tbody>
-              {motors !== null ? motors.map(motor => <MotorTableRow key={motor.id} motor={motor} />) 
+              {motors !== null && motors !== undefined ? motors.map(motor => <MotorTableRow key={motor.id} motor={motor} />) 
               :
               <tr>
                 <td>sin datos</td>

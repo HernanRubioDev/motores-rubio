@@ -1,9 +1,12 @@
 import {useNavigate } from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
-import { createEndpoint, dinamicEndpoint } from '../scripts/dinamicEndpoint';
+import {dinamicEndpoint } from '../scripts/dinamicEndpoint';
+import helpHttp from '../helpers/helpHttp';
 
 export const useApi = ()=>{
   const navigate = useNavigate();
+  const {get, post, put, patch ,del} = helpHttp();
+
   const registerUser = async (form, setErrors, setLoading, setResponse, openModal)=>{
     setLoading(true);
     const userError = await checkUsername(form);
@@ -24,30 +27,21 @@ export const useApi = ()=>{
     const endpoint = "http://localhost:5000/users"
     form.id = uuidv4();
     const options={
-      method:'POST',
-      body: JSON.stringify(form),
-      headers:{
-        "Content-type" : "application/json",
-      }
+      body: form
     }
-    await fetch(endpoint,options)
-    .then((res)=>{
-      if(res.ok){
-        setResponse('Tu cuenta ah sido creada con éxito')
-        openModal();
-      }
-      else{
-        setResponse('Ups...parece que hubo un error. :(')
-        openModal();
-      }
-    })
+
+    const res = await post(endpoint, options);
+    if(res.length !== 0) setResponse('Tu cuenta ah sido creada con éxito')
+    else setResponse('Ups...parece que hubo un error. :(')
+    openModal();
+
     setLoading(false)
   } 
 
   const loginUser = async (form, setLoading, setErrors)=>{
     setLoading(true)
     const userData = await getUserData(form)
-    if(userData === undefined){
+    if(userData === null){
       const error = {login:'El usuario o la conraseña son incorrectos'}
       setErrors(error);
       setLoading(false)
@@ -55,29 +49,18 @@ export const useApi = ()=>{
     }
 
     const endpoint = `http://localhost:5000/users/${userData.id}`;
-    const auth = {token: Date.now()}
+    const auth = {token: uuidv4()}
     const options={
-      method:'PATCH',
-      body: JSON.stringify(auth),
-      headers:{
-        "Content-type" : "application/json",
-      }
+      body: auth,
     }
 
-    await fetch(endpoint, options)
-    .then((res)=>{
-      if(res.ok){
-        localStorage.setItem('username', form.username);
-        localStorage.setItem('token', auth.token);
-        localStorage.setItem('email', userData.email)
-        setLoading(false)
-        navigate('/')
-      }
-      else{
-        console.log('Error')
-        setLoading(false)
-      }
-    });
+    if(await patch(endpoint, options) !== 0){
+      localStorage.setItem('username', form.username);
+      localStorage.setItem('token', auth.token);
+      localStorage.setItem('email', userData.email)
+      setLoading(false)
+      navigate('/')
+    }
   }
 
   const logoutUser = async ()=>{
@@ -86,60 +69,27 @@ export const useApi = ()=>{
     const auth = {token: null}
 
     const options={
-      method:'PATCH',
-      body: JSON.stringify(auth),
-      headers:{
-        "Content-type" : "application/json",
-      }
+      body: auth,
     }
 
-    await fetch(endpoint, options)
-    .then((res)=>{
-      if(!res.ok) {
-        console.log('Error en el LogOut');
-      }
-
-      localStorage.removeItem('username')
-      localStorage.removeItem('email')
-      localStorage.removeItem('token')
-      navigate('/login')
-    })
+    await patch(endpoint, options);
+    localStorage.clear();
+    navigate('/login')
   }
 
   const getUserData = async (form)=>{
     const endpoint = `http://localhost:5000/users?username=${form.username}&password=${form.password}`;
-    let userData;
-    await fetch(endpoint)
-    .then((res)=>{
-      if(res.ok){
-        return res.json();
-      }
-      else{
-        console.log('Error')
-      }
-    })
-    .then((data)=>{ 
-      userData = data[0]
-    });
-
-    return userData;
+    let res = await get(endpoint);
+    if(res.length !== 0) return res[0]
+    return null
   }
 
   const getUserId = async ()=>{ 
     const token = localStorage.getItem('token');
     const endpoint = `http://localhost:5000/users?token=${token}`;
-
-    const userData = await fetch (endpoint)
-    .then((res)=>{
-      if(res.ok){
-        return res.json();
-      }
-      else{
-        console.log('Error en getUserId');
-      }
-    })
-
-    return userData[0].id;
+    const res = await get(endpoint);
+    if(res.length !== 0) return res[0].id;
+    else return null
   }
 
   const checkUsername = async(form)=>{
@@ -183,67 +133,34 @@ export const useApi = ()=>{
   const checkUserAuth = async ()=>{
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
-    let auth = null;
-  
+    
     const endpoint = `http://localhost:5000/users?username=${username}&token=${token}`
-
-    await fetch(endpoint)
-    .then((res)=>{
-      if(res.ok){
-        return res.json();
-      }
-      else{
-        console.log('Error en checkUserAuth.')
-        auth = false;
-      }
-    })
-    .then((data)=>{
-      if(data.length !== 0) auth = true
-      else auth = false
-    })
-  //agregar el catch
-    return auth
+    const auth = await get(endpoint);
+    if (auth.length === 0) return false
+    return true
   }
 
   const addNewMotor = async(form, setLoading)=>{
-    setLoading(true);
-    const auth = await checkUserAuth();
-    if(!auth) return
-    const id = await getUserId();
-    form.user_id = id;
-    form.id = uuidv4();
     const endpoint = `http://localhost:5000/motors`;
+    setLoading(true);
+    if(!await checkUserAuth()) return
 
+    form.user_id = await getUserId();
+    form.id = uuidv4();
+    
     const options = {
-      method: 'POST',
-      body: JSON.stringify(form),
-      headers:{
-        "Content-type" : "Application/Json",
-      }
+      body: form,
     }
-    await fetch(endpoint, options).then((res)=>{
-      if(!res.ok){
 
-        throw new Error('Error');
-      }
-      setLoading(false);
-    })
-    .catch((err)=> {
-        setLoading(false);
-      console.error(err)});
-  }
+    setLoading(false)
+    return await post(endpoint, options);
+  } 
 
   const getMotor = async (form)=>{
     const id = await getUserId();
     let endpoint = `http://localhost:5000/motors?user_id=${id}`;
     endpoint = dinamicEndpoint(form, endpoint);
-    let data = await fetch(endpoint)
-    .then((res)=>{
-      if(!res.ok) throw new Error('Error en getMotor');
-      else return res.json();
-    })
-    .catch(err => console.error(err));
-    return data; 
+    return await get(endpoint);
   }
 
   return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getMotor}
