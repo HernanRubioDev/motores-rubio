@@ -42,7 +42,7 @@ export const useApi = ()=>{
     setLoading(true)
     const userData = await getUserData(form)
     if(userData === null){
-      const error = {login:'El usuario o la conraseña son incorrectos'}
+      const error = {login:'El usuario o la conraseña son incorrectos.'}
       setErrors(error);
       setLoading(false)
       return
@@ -95,38 +95,16 @@ export const useApi = ()=>{
   const checkUsername = async(form)=>{
     const endpoint = `http://localhost:5000/users?username=${form.username}`
     let error = {};
-    await fetch(endpoint)
-    .then((res)=>{
-      if(res.ok){
-        return res.json();
-      }
-      else{
-        return false
-      }
-    })
-    .then((data)=> {
-      if(Object.keys(data).length !== 0) error.username = 'El usuario ya existe.'
-    });
-
+    const res = await get(endpoint);
+    if(res.length !== 0) error.username = 'El usuario ya existe.';
     return error;
   }
 
   const checkEmail = async (form)=>{
     const endpoint = `http://localhost:5000/users?email=${form.email}`
-    let error = {};
-    await fetch(endpoint)
-    .then((res)=>{
-      if(res.ok){
-        return res.json();
-      }
-      else{
-        return false
-      }
-    })
-    .then((data)=> {
-      if(Object.keys(data).length !== 0) error.email = 'Ya existe una cuenta con este Email.'
-    });
-
+    const error = {};
+    const res = await get(endpoint);
+    if (res.length !== 0) error.email = 'Ya existe una cuenta con este Email.';
     return error;
   }
 

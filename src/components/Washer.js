@@ -46,8 +46,8 @@ const Washer = ()=>{
   }
 return(
 <section className="d-flex flex-column container-fluid justify-content-evenly align-items-center h-100 w-100 bg-body-secondary ">
-    <h3 className='fs-2 fw-bold text-secondary'>Nuevo Lavarropas Automático</h3>
     <div className="w-75 h-75 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow">
+    <h3 className='fs-3 fw-bold text-white text-center bg-dark m-0 p-1'>Nuevo Lavarropas Automático</h3>
       <nav className="w-100 d-flex flex-nowrap flex-row justify-content-evenly list-group">
       <ul className="nav nav-pills w-100 bg-dark">  
         <li className="nav-item border border-secondary border-start-0 flex-fill">

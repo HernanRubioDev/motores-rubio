@@ -32,3 +32,21 @@
 .mh-100{
   max-height: 50%;
 }
+
+ /*MEDIDAS DE ALTURA MAXIMA*/
+ 
+.h-xm-100{
+   min-height: 100%;
+ }
+.h-sm-100{
+  min-height: 100%;
+}
+.h-md-100{
+  max-height: 100%;
+}
+.h-lg-100{
+  min-height: 100%;
+}
+.h-xl-100{
+  min-height: 100%;
+}
