@@ -1,4 +1,3 @@
-import { useModal } from '../hooks/useModal';
 import '../stylesheets/Modal.css';
 
 const Modal = ({isOpen, children})=>{

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useActive from '../hooks/useActive';
+import { useApi } from '../hooks/useApi';
 import useForm from '../hooks/useForm';
 import Loader from './Loader';
 
@@ -39,58 +40,66 @@ const Washer = ()=>{
 
   const [activeBtn, setActiveBtn] = useState('washer-left__link');
   const {changeActive} = useActive();
-  const {handleChange, form, handleSubmit, loading} = useForm(initialForm);
+  const {handleChange, form} = useForm(initialForm);
+  const {addNewMotor, loading} = useApi();
 
   const handleActive = (e)=>{
     changeActive(e, activeBtn, setActiveBtn);
   }
+
 return(
 <section className="d-flex flex-column container-fluid justify-content-evenly align-items-center h-100 w-100 bg-body-secondary ">
-    <div className="w-75 h-75 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow">
+    <div className="w-75 h-100 m-2 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow">
     <h3 className='fs-3 fw-bold text-white text-center bg-dark m-0 p-1'>Nuevo Lavarropas Automático</h3>
       <nav className="w-100 d-flex flex-nowrap flex-row justify-content-evenly list-group">
       <ul className="nav nav-pills w-100 bg-dark">  
         <li className="nav-item border border-secondary border-start-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold active pressed-btn" href="#washer-left" id="washer-left__link">Primero</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold active pressed-btn" href="#washer-left" id="washer-left__link">Información</a>
         </li>
         <li className="nav-item border border-secondary border-start-0 border-end-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold" href="#washer-center" id="washer-center__link">Segundo</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold" href="#washer-center" id="washer-center__link">Detalles</a>
         </li>
         <li className="nav-item border border-secondary border-end-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold" href="#washer-right" id="washer-right__link">Tercero</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 text-white fw-bold" href="#washer-right" id="washer-right__link">Comentarios</a>
         </li>
       </ul>
       </nav>
-      <form onSubmit={(e)=>handleSubmit(e)} name='washer' className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
+      <form name='washer' className="w-100 h-100 d-flex flex-nowrap overflow-hidden" >
         <div id="washer-left" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center align-content-center">
-          <div className='col-11 d-flex flex-wrap h-50 border border-secondary justify-content-evenly '>
-              <div className="d-flex align-items-center m-2 w-25">
+          <div className='col-11 d-flex flex-wrap h-75 border border-secondary justify-content-evenly align-items-center'>
+            <div className='d-flex flex-column justify-content-evenly border border-secondary align-items-center h-50 w-25'>
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Marca" name='brand' value={form.brand}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Rpm" name='rpm' value={form.rpm}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Dim. Mayor" name='majorDim' value={form.majorDim}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+            </div>
+            <div className='d-flex flex-column justify-content-evenly border border-secondary align-items-center h-50 w-25'>
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Modelo" name='model' value={form.model}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Hp" name='hp' value={form.hp}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Dim. Menor" name='minorDim' value={form.minorDim}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+            </div>
+            <div className='d-flex flex-column justify-content-evenly border border-secondary align-items-center h-50 w-25'>
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Dueño" name='owner' value={form.owner}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Ranura" name='slots' value={form.slots}/>
               </div>
-              <div className="d-flex align-items-center m-2 w-25">
+              <div className="d-flex align-items-center m-2">
                 <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Largo" name='large' value={form.large}/>
               </div>
+            </div>
           </div>
         </div>
         <div id="washer-center" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center">
@@ -183,7 +192,7 @@ return(
             </div>
             {loading ? <Loader />
             :
-            <button type="submit" className="btn btn-primary col-6 col-lg-4">Guardar</button>
+            <button onClick={()=>addNewMotor(form)} type="button" className="btn btn-primary col-6 col-lg-4">Guardar</button>
             }
           </div>
         </div>

@@ -1,6 +1,7 @@
 
 import useForm from "../hooks/useForm";
-import {useMotor} from '../hooks/useMotor';
+import { useMotor } from "../hooks/useMotor";
+import Loader from "./Loader";
 import MotorTableRow from "./MotorTableRow";
 
 const Search = ()=>{
@@ -19,14 +20,14 @@ const Search = ()=>{
     startType:'',
   }
 
-  const {handleChange, handleSubmit, form} = useForm(initialForm);
-  const {motors, getMotors} = useMotor()
+  const {handleChange, form} = useForm(initialForm);
+  const{getMotors, delMotor, loading, motors} = useMotor();
   
   return(
     <section className="d-flex flex-column p-0 p-lg-3 container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary overflow-hidden">
       <div className="d-flex flex-column h-100 border border-secondary bg-white box-shadow col-12 col-lg-9">
         <h3 className="text-center fw-bold fs-3 text-secondary p-2 m-0 bg-dark text-white">Buscar</h3>
-        <form className="d-flex flex-column justify-content-evenly h-50 col-12">
+        <form name='search' className="d-flex flex-column justify-content-evenly h-60 col-12">
           <div className="d-flex col-12 justify-content-evenly">
             <div className="d-flex flex-column align-items-center border border-secondary col-lg-3">
               <div className="d-flex align-items-center m-3">
@@ -84,19 +85,22 @@ const Search = ()=>{
           <button type="reset" className="btn btn-primary col-3 col-lg-3">Limpiar</button>
           </div>
         </form>
-        <div className="h-50 overflow-y-auto border-top border-dark">
+        <div className="d-flex justify-content-center overflow-y-auto border-top border-dark">
+          {loading ? <Loader /> 
+          :
           <table className="table table-light table-striped table table-bordered table-hover">
             <thead>
               <tr>
                 <th scope="col">Marca</th>
                 <th scope="col">Dueño</th>
                 <th scope="col">Dim.Mayor</th>
-                <th scope="col">Min. Menor</th>
+                <th scope="col">Dim. Menor</th>
                 <th scope="col">Largo</th>
+                <th scope="col">Acción</th>
               </tr>
             </thead>
             <tbody>
-              {motors !== null && motors !== undefined ? motors.map(motor => <MotorTableRow key={motor.id} motor={motor} />) 
+              {motors !== null && motors !== undefined ? motors.map(motor => <MotorTableRow  key={motor.id} motor={motor} delMotor={delMotor}/>) 
               :
               <tr>
                 <td>sin datos</td>
@@ -106,8 +110,9 @@ const Search = ()=>{
                 <td>sin datos</td>
               </tr>
               }
-            </tbody>
+            </tbody>  
           </table>
+          }
         </div>
       </div>
     </section>

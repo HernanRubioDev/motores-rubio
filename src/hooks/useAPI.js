@@ -2,24 +2,27 @@ import {useNavigate } from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 import {dinamicEndpoint } from '../scripts/dinamicEndpoint';
 import helpHttp from '../helpers/helpHttp';
+import { useState } from 'react';
 
 export const useApi = ()=>{
   const navigate = useNavigate();
-  const {get, post, put, patch ,del} = helpHttp();
+  const {get, post, patch, del} = helpHttp();
+  const [loading, setLoading] =useState();
+  const [response, setResponse] =useState({});
 
-  const registerUser = async (form, setErrors, setLoading, setResponse, openModal)=>{
+  const registerUser = async (form, openModal)=>{
     setLoading(true);
     const userError = await checkUsername(form);
     const emailError = await checkEmail(form);
     
     if (Object.keys(userError).length !== 0){
-      setErrors(userError);
+      setResponse(userError);
       setLoading(false);
       return
     }
     
     if (Object.keys(emailError).length !== 0){
-      setErrors(emailError);
+      setResponse(emailError);
       setLoading(false);
       return
     }
@@ -31,19 +34,18 @@ export const useApi = ()=>{
     }
 
     const res = await post(endpoint, options);
-    if(res.length !== 0) setResponse('Tu cuenta ah sido creada con éxito')
-    else setResponse('Ups...parece que hubo un error. :(')
+    if(res.length !== 0) setResponse({title:'¡Bienvenido!', register: 'Tu cuenta ah sido creada con éxito'})
+    else setResponse({register:'Ups...parece que hubo un error. :(', title:'Error'})
     openModal();
-
     setLoading(false)
   } 
 
-  const loginUser = async (form, setLoading, setErrors)=>{
+  const loginUser = async (form)=>{
     setLoading(true)
     const userData = await getUserData(form)
     if(userData === null){
       const error = {login:'El usuario o la conraseña son incorrectos.'}
-      setErrors(error);
+      setResponse(error);
       setLoading(false)
       return
     }
@@ -118,7 +120,7 @@ export const useApi = ()=>{
     return true
   }
 
-  const addNewMotor = async(form, setLoading)=>{
+  const addNewMotor = async(form)=>{
     const endpoint = `http://localhost:5000/motors`;
     setLoading(true);
     if(!await checkUserAuth()) return
@@ -129,7 +131,7 @@ export const useApi = ()=>{
     const options = {
       body: form,
     }
-
+    
     setLoading(false)
     return await post(endpoint, options);
   } 
@@ -141,5 +143,10 @@ export const useApi = ()=>{
     return await get(endpoint);
   }
 
-  return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getMotor}
+  const deleteMotor = async(id)=>{
+    const endpoint= `http://localhost:5000/motors/${id}`
+    await del(endpoint);
+  }
+
+  return {registerUser, loginUser, logoutUser ,checkUsername, checkEmail, checkUserAuth, addNewMotor, getMotor, deleteMotor, loading, setLoading, response, setResponse}
  } 

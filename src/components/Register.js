@@ -1,5 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useApi } from "../hooks/useApi";
 import useForm from "../hooks/useForm";
+import { useModal } from "../hooks/useModal";
 import Loader from "./Loader";
 import Modal from "./Modal";
 
@@ -15,7 +17,7 @@ const Register = ()=>{
   const validateForm = (form)=>{
     const errors ={}
     const user_regEx = /^[a-z0-9_-]{5,16}/igm;
-    const email_regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const email_regEx = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const pass_regEx = /^(?=.*\d)(?=.*[!@#$%_^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     switch (true) {
       case !form.username.trim():
@@ -46,42 +48,48 @@ const Register = ()=>{
         errors.password = 'La contraseña debe contenter entre 8 y 20 carácteres.';
         break
         
-        case !pass_regEx.test(form.password):
-          errors.password = 'La contraseña debe contener al menos un numero, una letra y un caracter especial';
-          break
+      case !pass_regEx.test(form.password):
+        errors.password = 'La contraseña debe contener al menos un numero, una letra y un caracter especial';
+        break
           
-          case form.rePassword.trim() !== form.password.trim():
-            errors.rePassword='Las contraseñas no coinciden';
-            break
-          }
+      case form.rePassword.trim() !== form.password.trim():
+        errors.rePassword='Las contraseñas no coinciden';
+        break
+
+      default:
+        break
+      }
+
     return errors
   }
   
-  const {form, loading, errors,response ,handleChange, handleBlur, handleSubmit, isOpen, closeModal} = useForm(initialForm, validateForm);
-  const navigate = useNavigate()
-
+  const {form, errors, handleChange, handleBlur} = useForm(initialForm, validateForm);
+  const {response, loading, registerUser} = useApi()
+  const {isOpen, openModal, closeModal} = useModal();
+  
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
-      {response ? <Modal isOpen={isOpen}>
-        <div className="modal-dialog bg-white p-3">
+      {response.register ? 
+      <Modal isOpen={isOpen}>
+        <div className="modal-dialog bg-white p-2 d-flex flex-column position-relative rounded border border-secondary">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title fw-bold fs-3">{Object.keys(errors) !== 0 ? '¡Bienvendio!' : 'Error'}</h5>
-              <button onClick={closeModal} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 className="modal-title fs-2">{response.title}</h5>
+              <button onClick={()=> closeModal()} type="button" className="btn-close position-absolute top-0 end-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <p className='fs-5'>{response}</p>
+              <p className="fs-4">{response.register}</p>
             </div>
             <div className="modal-footer">
-              <button onClick={()=>navigate('/login')} type="button" className="btn btn-primary ">Ingresar</button>
+              <Link className="btn btn-primary" to='/login'>Ingresar</Link>
             </div>
           </div>
         </div>
       </Modal>
       :
-      ''}
-      
-      <form onSubmit={(e)=>handleSubmit(e)} name='register' className="border container-fluid p-3 w-sm-100 col-sm-7 col-md-6 col-lg-5 col-xl-4 bg-white rounded-1">
+      ''
+      }
+      <form className="border container-fluid p-3 w-sm-100 col-sm-7 col-md-6 col-lg-5 col-xl-4 bg-white rounded-1">
         <legend className="text-center w-100 border-bottom pb-3 fs-3 fw-semibold">Registrarse</legend>
         <div className="mb-3 pt-3">
           <div className="d-flex align-items-center">
@@ -91,6 +99,7 @@ const Register = ()=>{
             <input onBlur={(e)=>handleBlur(e)} onChange={(e)=>handleChange(e)} type="text" className="form-control ms-2" id="userRegister" autoFocus placeholder="Usuario" name='username' value={form.username}/>
           </div>
             <p id="userRegister" className="form-text text-danger text-start text-end">{errors.username}</p>
+            <p id="emailRegister" className="form-text text-danger text-end">{response.username}</p>
         </div>
         <div className="mb-3">
           <div className="d-flex align-items-center">
@@ -100,6 +109,8 @@ const Register = ()=>{
             <input onBlur={(e)=>handleBlur(e)} onChange={(e)=>handleChange(e)} type="email" className="form-control ms-2" id="emailRegister" placeholder="Email" name='email' value={form.email}/>
           </div>
             <p id="emailRegister" className="form-text text-danger text-end">{errors.email}</p>
+            <p id="emailRegister" className="form-text text-danger text-end">{response.email}</p>
+
         </div>
         <div className="mb-3">
           <div className="d-flex align-items-center">
@@ -123,9 +134,9 @@ const Register = ()=>{
         </div>
         <div className="d-flex flex-column justify-content-evenly align-items-center">
           {Object.keys(errors).length === 0 ?
-          <button type="submit" className="btn btn-primary w-100" >Registrarse</button>
+          <button onClick={()=>registerUser(form, openModal)} type="button" className="btn btn-primary w-100" >Registrarse</button>
           :
-          <button type="submit" className="btn btn-primary w-100" disabled>Registrarse</button>
+          <button type="button" className="btn btn-primary w-100" disabled>Registrarse</button>
         }
         {loading ? <Loader /> : ''}
         <div className="form-text text-secondary d-flex justify-content-center w-100 fs-6">¿tienes cuenta? <Link className="text-decoration-none text-primary ms-1 fs-6" to='/login'>Ingresa!</Link></div>

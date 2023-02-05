@@ -32,26 +32,25 @@ const helpHttp = ()=>{
     return await customFetch(url, options)
   }
 
-  const post = async (url, options)=>{
+  const post = async (url, options={})=>{
     options.method = "POST"
     return await customFetch(url, options);
 
   }
 
-  const put = async (url, options)=>{
+  const put = async (url, options={})=>{
     options.method = "PUT"
     return await customFetch(url, options);
   }
 
-  const patch = async (url, options)=>{
+  const patch = async (url, options={})=>{
     options.method = "PATCH"
     return await customFetch(url, options);
   }
 
-  const del = async (url, options)=>{
+  const del = async (url, options={})=>{
     options.method = "DELETE"
     return await customFetch(url, options);
-
   }
 
   return {

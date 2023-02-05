@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useApi } from "../hooks/useApi";
 import useForm from '../hooks/useForm';
 import Loader from "./Loader";
 
@@ -20,13 +21,17 @@ const Login = ()=>{
         errors.password = 'Este campo es obligatorio'
         break;
 
+        default:
+          break;
     }
     return errors
   }
-  const {form, loading, errors, response, handleChange, handleBlur, handleSubmit} = useForm(initialForm, validateForm);
+  const {form, errors, handleChange, handleBlur} = useForm(initialForm, validateForm);
+  const {loading, response, loginUser} = useApi();
+
   return(
     <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
-      <form onSubmit={(e)=>handleSubmit(e)} name="login" className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-3 bg-white rounded-1">
+      <form className="border container-fluid p-3 w-sm-100 col-sm-6 col-md-5 col-lg-4 col-xl-3 bg-white rounded-1">
         <legend className="text-center w-100 border-bottom pb-3 fs-4 fw-semibold ">Ingresar</legend>
         <div className="mb-3 pt-3">
           <div className="d-flex align-items-center">
@@ -48,11 +53,11 @@ const Login = ()=>{
           <div id="passwordLogin" className="form-text text-danger text-end">{errors.password}</div>
         </div>
         <div className="d-flex flex-column justify-content-evenly align-items-center">
-          {errors ? <p className="text-danger">{errors.login}</p> : ''}
+          {response ? <p className="text-danger">{response.login}</p> : ''}
         {Object.keys(errors).length === 0 ?
-          <button type="submit" className="btn btn-primary w-100">Ingresar</button>
+          <button onClick={()=>loginUser(form)} type="button" className="btn btn-primary w-100">Ingresar</button>
           :
-          <button type="submit" className="btn btn-primary w-100" disabled>Ingresar</button>
+          <button type="button" className="btn btn-primary w-100" disabled>Ingresar</button>
         }
         {loading ? <Loader /> : ''}
         <div className="form-text text-secondary d-flex justify-content-center fs-6">¿Aún no tienes cuenta? <Link className="text-decoration-none text-primary ms-1 fs-6" to='/register'>¡Registrate!</Link></div>

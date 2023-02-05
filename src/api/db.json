@@ -6,23 +6,14 @@
       "password": "Hr_224426628815",
       "rePassword": "Hr_224426628815",
       "id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
-      "token": "9fe03a91-4053-4723-915c-8f261578be20"
-    },
-    {
-      "username": "ignacio",
-      "email": "ignacionGrubio@hotmail.com",
-      "password": "Hr_224426628815",
-      "rePassword": "Hr_224426628815",
-      "id": "a921788f-7416-46ba-950b-1d94e03c61c2",
       "token": null
     },
     {
       "username": "gabriel",
-      "email": "elgabo01@hotmail.com",
-      "password": "Hr_123456",
-      "rePassword": "Hr_123456",
-      "id": "11086971-4c5f-4c49-8dc3-41a7f0499d0f",
-      "token": null
+      "email": "alfredogrubio@gmail.com",
+      "password": "Rebobinados_01",
+      "rePassword": "Rebobinados_01",
+      "id": "5d76fc5d-575a-426b-a02f-8e9719b34a5f"
     }
   ],
   "motors": [
@@ -404,6 +395,31 @@
       "observations": "",
       "user_id": "bcc11b2b-9872-4b7e-a127-18bf8131ecfc",
       "id": "39eee5d2-53b4-4d29-bf9d-9ff740e9577e"
+    },
+    {
+      "brand": "Metch",
+      "rpm": "2800",
+      "minorDim": "160",
+      "model": "",
+      "hp": "0.75",
+      "majorDim": "110",
+      "owner": "pasti",
+      "slots": "75",
+      "large": "120",
+      "startType": "condesandor",
+      "uf": "16",
+      "workSteps": "6-8-10-12",
+      "workLaps": "88-92-118-112",
+      "workWire": "0.65",
+      "startSteps": "6-8-10-12",
+      "startLaps": "26-26-32-34",
+      "startWire": "0.60",
+      "voltage": "220",
+      "connection": "",
+      "windingType": "",
+      "observations": "",
+      "user_id": "3c9c9845-ed18-4b98-ad2c-55d781ce5685",
+      "id": "164f1da1-50fb-4d53-8371-daea9aa95cd7"
     }
   ]
 }
