@@ -68,7 +68,7 @@ const Register = ()=>{
   const {isOpen, openModal, closeModal} = useModal();
   
   return(
-    <section className="d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
+    <section className="bg-img d-flex container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary">
       {response.register ? 
       <Modal isOpen={isOpen}>
         <div className="modal-dialog bg-white p-2 d-flex flex-column position-relative rounded border border-secondary">

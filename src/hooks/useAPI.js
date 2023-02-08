@@ -61,7 +61,7 @@ export const useApi = ()=>{
       localStorage.setItem('token', auth.token);
       localStorage.setItem('email', userData.email)
       setLoading(false)
-      navigate('/')
+      navigate('/search')
     }
   }
 

@@ -8,12 +8,14 @@ import Triphasic from './Triphasic';
 import Washer from './Washer';
 import Search from './Search';
 import PrivateRoute from './PrivateRoute';
+import Home from './Home';
 const MotoresRubio = ()=>{
   return(
     <main className="motores-rubio d-flex flex-column">
       <Router>
         <Header />
         <Routes>
+          <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/new/monophasic' element={<PrivateRoute path='/login'><Monophasic /></PrivateRoute>}/>

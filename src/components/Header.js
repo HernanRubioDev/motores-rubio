@@ -10,7 +10,7 @@ const Header = ()=>{
       <div className="container-fluid">
         <div>
           <img src='images/Logo.png' className='me-1'/>
-          <a className="navbar-brand" href="#">Motores-Rubio</a>
+          <a className="navbar-brand" href="/">Motores-Rubio</a>
         </div>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span className="navbar-toggler-icon"></span>
@@ -74,7 +74,10 @@ const Header = ()=>{
               </>
                 
               :
-              <Link to='/login' type="button" className="btn btn-link text-decoration-none fw-semibold text-primary">Ingresar</Link>
+              <div className='d-flex flex-column flex-lg-row'>
+                <Link to='/' type="button" className="btn btn-link text-decoration-none fw-semibold text-black">Información</Link>
+                <Link to='/login' type="button" className="btn btn-link text-decoration-none fw-semibold text-primary">Ingresar</Link>
+              </div>
               }
             </ul>
           </div>
