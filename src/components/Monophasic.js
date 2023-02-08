@@ -47,13 +47,13 @@ const Monophasic = ()=>{
       <nav className="col-12 d-flex flex-nowrap flex-row justify-content-evenly list-group">
       <ul className="nav nav-pills w-100 bg-dark">  
         <li className="nav-item border border-secondary border-start-0 flex-fill" aria-current="true">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 fw-bold text-white active pressed-btn" href="#mono-left" id='mono-left__link'>Primero</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 fw-bold text-white active pressed-btn" href="#mono-left" id='mono-left__link'>Infromación</a>
         </li>
         <li className="nav-item border border-secondary border-start-0 border-end-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 fw-bold text-white" href="#mono-center" id='mono-center__link'>Segundo</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 fw-bold text-white" href="#mono-center" id='mono-center__link'>Detalles</a>
         </li>
         <li className="nav-item border border-secondary border-end-0 flex-fill">
-          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 fw-bold text-white" href="#mono-right" id='mono-right__link'>Tercero</a>
+          <a onClick={(e)=>handleActive(e)} className="nav-link text-center rounded-0 fw-bold text-white" href="#mono-right" id='mono-right__link'>Conentarios</a>
         </li>
       </ul>
       </nav>
