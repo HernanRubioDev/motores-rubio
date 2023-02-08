@@ -6,6 +6,7 @@ export const useMotor = ()=>{
   const {getMotor, deleteMotor, setLoading, loading} = useApi();
 
   const getMotors = async(form)=>{
+    if(form.motorType !== 'monophasic') delete form.startType
     setLoading(true)
     const motor = await getMotor(form);
     setMotors(motor);
@@ -21,5 +22,13 @@ export const useMotor = ()=>{
     setLoading(false);
   }
 
-  return {getMotors, delMotor, loading, motors}
+  const getAllMotors = async (form)=>{
+    setLoading(true)
+    const motor = await getMotor(form);
+    setMotors(motor);
+    setLoading(false)
+    return motors
+  }
+
+  return {getMotors, delMotor, getAllMotors, loading, motors}
 }

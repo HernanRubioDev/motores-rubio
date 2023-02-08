@@ -18,6 +18,7 @@ const Monophasic = ()=>{
     slots:'',
     large:'',
     startType:'plaqueta',
+    motorType:'monophasic',
     uf:'',
     workSteps:'',
     workLaps:'',
@@ -40,7 +41,7 @@ const Monophasic = ()=>{
   }
 
   return(
-    <section className="d-flex flex-column container-fluid p-lg-2 justify-content-center align-items-center h-100 w-100 bg-body-secondary overflow-hidden">
+    <section className="bg-img d-flex flex-column container-fluid p-lg-2 p-0 justify-content-evenly align-items-center h-100 w-100 bg-body-secondary">
       <div className="col-12 col-lg-9 h-100 m-2 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow overflow-hidden">
         <h3 className='fs-3 fw-bold text-white text-center bg-dark m-0 p-1'>Nuevo Monofásico</h3>
       <nav className="col-12 d-flex flex-nowrap flex-row justify-content-evenly list-group">
@@ -57,7 +58,7 @@ const Monophasic = ()=>{
       </ul>
       </nav>
       <form name='monophasic' className="w-100 h-100 d-flex flex-nowrap overflow-hidden">
-        <div id="mono-left" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center align-content-center">
+        <div id="mono-left" className="login-form__div w-100 h-100 d-flex flex-column justify-content-evenly align-items-center">
           <div className='col-11 d-flex flex-wrap h-75 border border-secondary align-content-around justify-content-evenly'>
             <div className='d-flex flex-column justify-content-evenly border border-secondary align-items-center h-50 col-sm-4 col-lg-3'>
               <div className="d-flex align-items-center m-2">
@@ -97,10 +98,10 @@ const Monophasic = ()=>{
                   <select onChange={(e)=>handleChange(e)} className="form-select border-secondary" id="inputGroupSelect01" name='startType' value={form.startType}>
                     <option value="" disabled defaultChecked>Tipo de Arranque</option>
                     <option value="plaqueta">Plaqueta</option>
-                    <option value="condesandor">Condesador</option>
+                    <option value="condensador">Condesador</option>
                   </select>
                 </div>
-                {form.startType === 'condesandor' ? 
+                {form.startType === 'condensador' ? 
                 <div className="d-flex align-items-center m-2">
                   <input onChange={(e)=>handleChange(e)} type="text" className="form-control border-secondary"placeholder="Capacidad μF" name='uf' value={form.uf}/>
                 </div>
@@ -110,7 +111,7 @@ const Monophasic = ()=>{
             </div>
             </div>
         </div>
-        <div id="mono-center" className="login-form__div w-100 h-100 d-flex justify-content-evenly align-items-center">
+        <div id="mono-center" className="login-form__div w-100 h-100 d-flex justify-content-center align-items-center">
           <div className='d-flex justify-content-evenly align-items-center col-11 h-75 border border-secondary '>
             <div className=' d-flex flex-column justify-content-evenly border border-secondary w-25 position-relative p-2 h-50'>
               <p className="mono-lable fw-semibold position-absolute start-50 bg-white translate-middle ">Trabajo</p>
@@ -150,8 +151,8 @@ const Monophasic = ()=>{
           </div>
         </div>
         <div id="mono-right" className="login-form__div w-100 h-100 d-flex justify-content-center align-items-center">
-          <div className="col-12  d-flex flex-column align-items-center justify-content-evenly h-100">
-            <div className="form-floating w-75 h-50">
+          <div className="w-75 d-flex flex-column align-items-center justify-content-evenly h-100">
+            <div className="form-floating w-75 h-75">
               <textarea onChange={(e)=>handleChange(e)} className="form-control h-100 border-secondary" placeholder="Leave a comment here" id="floatingTextarea" name='observations' value={form.observations}></textarea>
               <label htmlFor="floatingTextarea">Observaciones</label>
             </div>

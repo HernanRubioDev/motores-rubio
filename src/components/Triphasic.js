@@ -20,7 +20,8 @@ const Triphasic = ()=>{
     voltage:'',
     connection:'',
     windingType:'',
-    observations:''
+    observations:'',
+    motorType:'triphasic',
   }
 
   const [activeBtn, setActiveBtn] = useState('triphasic-left__link');
@@ -32,7 +33,7 @@ const Triphasic = ()=>{
     changeActive(e, activeBtn, setActiveBtn);
   }
   return(
-  <section className="d-flex flex-column container-fluid p-lg-2 justify-content-evenly align-items-center h-100 w-100 bg-body-secondary">
+  <section className="bg-img d-flex flex-column container-fluid p-lg-2 p-0 justify-content-evenly align-items-center h-100 w-100 bg-body-secondary">
     <div className="col-12 col-lg-9 h-100 m-2 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow">
     <h3 className='fs-3 fw-bold text-white text-center bg-dark m-0 p-1'>Nuevo Trifásico</h3>
       <nav className="w-100 d-flex flex-nowrap flex-row justify-content-evenly list-group">

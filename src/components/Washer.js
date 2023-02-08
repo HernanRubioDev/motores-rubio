@@ -35,7 +35,8 @@ const Washer = ()=>{
     washStartSteps:'',
     washStartLaps:'',
     washStartWire:'',
-    observations:''
+    observations:'',
+    motorType:'washer',
   }
 
   const [activeBtn, setActiveBtn] = useState('washer-left__link');
@@ -48,8 +49,8 @@ const Washer = ()=>{
   }
 
 return(
-<section className="d-flex flex-column container-fluid justify-content-evenly align-items-center h-100 w-100 bg-body-secondary ">
-    <div className="w-75 h-100 m-2 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow">
+<section className="bg-img d-flex flex-column container-fluid p-lg-2 p-0 justify-content-evenly align-items-center h-100 w-100 bg-body-secondary">
+    <div className="col-12 col-lg-9 h-100 m-2 border border-secondary border-top-0 bg-white d-flex flex-column box-shadow overflow-hidden">
     <h3 className='fs-3 fw-bold text-white text-center bg-dark m-0 p-1'>Nuevo Lavarropas Automático</h3>
       <nav className="w-100 d-flex flex-nowrap flex-row justify-content-evenly list-group">
       <ul className="nav nav-pills w-100 bg-dark">  
