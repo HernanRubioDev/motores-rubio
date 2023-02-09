@@ -21,7 +21,7 @@ const Search = ()=>{
 
   const {handleChange, form} = useForm(initialForm);
   const{getMotors, delMotor, getAllMotors, loading, motors} = useMotor();
-  
+
   return(
     <section className="bg-img d-flex flex-column p-0 p-lg-3 container-fluid justify-content-center align-items-center h-100 w-100 bg-body-secondary overflow-hidden">
       <div className="d-flex flex-column h-100 border border-secondary bg-white box-shadow col-12 col-lg-9">
