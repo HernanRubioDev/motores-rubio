@@ -1,0 +1,17 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+/*OPCIONES VAIRAS*/
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+/*OPCIONES DE ALTURA*/
+
+.vh-100{
+  height: 100vh;
+  max-height: 100vh;
+}
