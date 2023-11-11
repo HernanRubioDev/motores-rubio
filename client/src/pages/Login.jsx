@@ -12,8 +12,8 @@ const Login = ()=>{
     if(session.auth_token) navigate("/search")
   },[session])
 
-  const { loading, response, loginUser} = useUser()
-  const errors=null
+  const { loading, errors, response, loginUser} = useUser()
+
   return(
     <main className='vh-100 d-flex flex-column justify-content-center align-items-center bg-light overflow-hidden'>
       <LoginForm loading={loading} errors={errors} loginUser={loginUser}/>

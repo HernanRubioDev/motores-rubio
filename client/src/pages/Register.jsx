@@ -1,9 +1,11 @@
+import RegisterForm from "../components/register/RegisterForm";
+
 
 const Register = ()=>{  
 
   return(
-    <main className="mh-100 d-flex flex-wrap justify-content-center col-12 bg-body-secondary">
-
+    <main className="vh-100 d-flex flex-column justify-content-center align-items-center bg-light overflow-hidden">
+      <RegisterForm />
     </main>
   );
 }

@@ -1,0 +1,7 @@
+.register-input{
+  padding-left: 2rem !important;
+}
+
+.register-input::placeholder{
+  color: #a1a1a1 !important;
+}
