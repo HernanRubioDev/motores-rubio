@@ -1,0 +1,7 @@
+.login-input{
+  padding-left: 2rem !important;
+}
+
+.login-input::placeholder{
+  color: #a1a1a1 !important;
+}

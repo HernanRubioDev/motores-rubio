@@ -1,14 +1,8 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
 
-const useForm = (initialForm, validateForm)=>{
+const useForm = (initialForm)=>{
 
   const [form, setForm] = useState(initialForm);
-  const [dataToEdit, setDataToEdit] = useState(null);
-  const [errors, setErrors] = useState({})
-  const [motorToDelete, setMotorToDelete] = useState(null);
-
-  const navigate = useNavigate();
 
   const handleChange = (e)=>{
     setForm({
@@ -16,22 +10,7 @@ const useForm = (initialForm, validateForm)=>{
     });
   }
 
-  const handleEdit = (e)=>{
-    setDataToEdit({
-      ...dataToEdit, [e.target.name]: e.target.value
-    })
-  }
-
-  const handleDelete = (id)=>{
-    setMotorToDelete(id)
-  }
-
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    setErrors(validateForm(form));
-  }
-
-  return {form, errors, dataToEdit, motorToDelete, handleChange, setErrors, handleSubmit, handleEdit, handleDelete, setForm, setDataToEdit}
+  return {form, handleChange, setForm}
 }
 
 export default useForm;

@@ -7,21 +7,24 @@ import Monophasic from './pages/Monophasic';
 import Triphasic from './pages/Triphasic';
 import Washer from './pages/Washer';
 import ErrorPage from './pages/ErrorPage';
+import { SessionProvider } from './context/UserContext';
 
 function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Login />}/>
-        <Route path='/register' element={<Register />}/>
-        <Route path='/search' element={<Search />}/>
-        <Route path='/monophasic' element={<Monophasic />}/>
-        <Route path='/triphasic' element={<Triphasic />}/>
-        <Route path='/washer' element={<Washer />}/>
-        <Route path='*' element={<ErrorPage />}/>
-      </Routes>
-    </Router>
+    <SessionProvider>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
+          <Route path='/search' element={<Search />}/>
+          <Route path='/monophasic' element={<Monophasic />}/>
+          <Route path='/triphasic' element={<Triphasic />}/>
+          <Route path='/washer' element={<Washer />}/>
+          <Route path='*' element={<ErrorPage />}/>
+        </Routes>
+      </Router>
+    </SessionProvider>
   )
 }
 

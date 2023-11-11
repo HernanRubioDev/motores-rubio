@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.outline-none{
+  outline: none;
+}
+
 /*OPCIONES DE ALTURA*/
 
 .vh-100{
