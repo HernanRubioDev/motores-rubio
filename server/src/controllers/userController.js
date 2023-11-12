@@ -28,7 +28,7 @@ const loginUser = async(req, res)=>{
     const response = await getUserByUsername(username);
     switch (true) {
       case response.rowCount === 0:
-        res.json({status:404, message:"El usuario o la contraseña son incorrectos."});
+        res.json({status:401, validations:{password:"El usuario o la contraseña son incorrectos.", username:" "}});
         break;
 
       case response.rowCount !== 0:
@@ -45,7 +45,7 @@ const loginUser = async(req, res)=>{
           res.json({status:500, title:"Ups...", body:"Parece que ha ocurrido un error...inténtelo mas tarde", success:false})
         }
         else {
-        res.json({status:403, message:"El usuario o la contraseña son incorrectos."})}
+        res.json({status:403, validations:{password:"El usuario o la contraseña son incorrectos.", username:" "}})}
         break
 
       default:
@@ -53,7 +53,6 @@ const loginUser = async(req, res)=>{
         break;
     }
   } catch (error) {
-    console.log(error)
     res.json({status:500, title:"Ups...", body:"Parece que ha ocurrido un error...inténtelo mas tarde", success:false});
   }
 }
@@ -72,7 +71,6 @@ const logoutUser = async(req, res)=>{
         break;
     }
   } catch (error) {
-    console.log(error)
     res.json({status: 500});
   }
 }

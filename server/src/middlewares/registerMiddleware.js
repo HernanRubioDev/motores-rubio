@@ -14,7 +14,7 @@ const regiserMiddleware = async (req, res, next)=>{
 
 	isEmpty(validations) 
 	? 
-	res.json({status:400, title:"Error", body:validations, success: false}) 
+	res.json({status:400, title:"Error", validations:validations, success: false}) 
 	: 
 	next();
 }

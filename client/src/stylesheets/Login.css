@@ -5,3 +5,7 @@
 .login-input::placeholder{
   color: #a1a1a1 !important;
 }
+
+.monophasic-menu{
+  width: 20rem;
+}

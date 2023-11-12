@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import sessionContext from "../context/UserContext";
 import { useContext, useEffect } from "react";
+import Header from "../components/Header";
 
 const Washer = ()=>{
 
@@ -12,8 +13,8 @@ const Washer = ()=>{
   },[session])
 
   return(
-    <main className='vh-100 d-flex flex-column'>
-
+    <main className='vh-100 d-flex flex-column overflow-hidden'>
+      <Header />
     </main>
   );
 }

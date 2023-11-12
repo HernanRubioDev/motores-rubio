@@ -28,8 +28,8 @@ const LoginForm = ({loading, errors, loginUser})=>{
             <label htmlFor="usernameValidation" className="text-body-tertiary fw-semibold">Usuario</label>
             <div className="d-flex flex-column align-items-center position-relative">
               <i className="fas fa-user position-absolute text-secondary ms-3 top-50 start-0 translate-middle"/>
-              <input onChange={(e)=>handleChange(e)} type="text" className={`${errors && errors.username && 'is-invalid'} login-input form-control`} id="usernameValidation" placeholder='Ingrese su usuario' required autoFocus name='username' value={form.username}/>
-            <span className={`${errors && errors.username ? 'invalid-feedback' : 'valid-feedback'} valid-feedback position-absolute top-100 m-0`}>
+              <input onChange={(e)=>handleChange(e)} type="text" className={`${errors && errors.username && 'is-invalid'} login-input form-control`} id="usernameValidation" placeholder='Ingrese su usuario' autoFocus name='username' value={form.username}/>
+            <span className={`${errors && errors.username ? 'invalid-feedback' : 'valid-feedback'} position-absolute top-100 m-0`}>
             {errors && errors.username}
             </span>
             </div>
@@ -38,7 +38,7 @@ const LoginForm = ({loading, errors, loginUser})=>{
             <label htmlFor="passwordValidation" className="text-body-tertiary fw-semibold">Contraseña</label>
             <div className="d-flex align-items-center position-relative">
               <i className="fas fa-key position-absolute ms-3 top-50 start-0 translate-middle text-secondary"/>
-              <input onChange={(e)=>handleChange(e)} type="password" className={`${errors && errors.username && 'is-invalid'} login-input form-control`} placeholder='Ingrese su contraseña' required name='password' value={form.password}/>
+              <input onChange={(e)=>handleChange(e)} type="password" className={`${errors && errors.password && 'is-invalid'} login-input form-control`} placeholder='Ingrese su contraseña' name='password' value={form.password}/>
             <span className={`${errors && errors.password ? 'invalid-feedback' : 'valid-feedback'} position-absolute top-100 m-0`}> 
               {errors && errors.password}
             </span>

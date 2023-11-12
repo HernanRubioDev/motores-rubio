@@ -11,7 +11,51 @@ const useUser = ()=>{
   const [response, setResponse] = useState([])
   const {handleSession} = useContext(sessionContext)
 
-  const registerUser = async()=>{}
+  const registerUser= async (e, user)=>{
+    e.preventDefault();
+    const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
+    setLoading(true)
+    const endpoint = "http://localhost:3000/user/register";
+    const options = {
+      body: user,
+      headers:{
+        "content-type":"application/json",
+      }
+    }
+    try {
+      const res = await api.post(endpoint, options)
+      switch (true) {
+
+        case res.status === 400:
+          setErrors(res.validations);
+          break;
+      
+        case res.status === 201:
+          setResponse(res)
+          alertModal.show()
+          setTimeout(() => {
+            alertModal.hide()
+            navigate("/")
+          }, 2000);
+          break;
+
+        case res.status === 500:
+          setResponse(res)
+          alertModal.show()
+          break;
+
+        default:
+          setResponse({title:"Error", body:"Parece que ha ocurrido un error. Inténtelo mas tarde.", success:false})
+          alertModal.show()
+          break;
+      }
+      
+    } catch (error) {
+      setResponse({title:"Error", body:"Parece que ha ocurrido un error. Inténtelo mas tarde.", success:false})
+      alertModal.show()
+    }
+    setLoading(false)
+  }
 
   const loginUser = async (e, user)=>{
     e.preventDefault();
@@ -38,13 +82,13 @@ const useUser = ()=>{
           handleSession(false)
           break
         
-        case res.status === 403:
-          setErrors(res);
+        case res.status === 401:
+          setErrors(res.validations);
           handleSession(false)
           break
         
-        case res.status === 404:
-          setErrors(res);
+        case res.status === 403:
+          setErrors(res.validations);
           handleSession(false)
           break
 
