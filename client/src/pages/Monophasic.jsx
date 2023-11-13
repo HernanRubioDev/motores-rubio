@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import InfoToast from "../components/InfoToast";
 import useMonophasic from "../hooks/useMonophasic";
-import MonophasicMain from "../components/monophasic/monophasicMain";
+import MonophasicMain from "../components/monophasic/MonophasicMain";
 
 
 const Monophasic = ()=>{
