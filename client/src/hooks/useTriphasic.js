@@ -3,7 +3,7 @@ import { helpHttp } from "../helpers/helpHttp";
 import { useContext, useState } from "react";
 import sessionContext from "../context/UserContext";
 
-const useMonophasic = ()=>{
+const useTriphasic = ()=>{
   const navigate = useNavigate();
   const api = helpHttp();
   const [loading, setLoading] = useState(false);
@@ -11,15 +11,15 @@ const useMonophasic = ()=>{
   const {session, handleSession} = useContext(sessionContext)
 
 
-  const registerMonophasic = async(e, monophasic)=>{
+  const registerTriphasic = async(e, triphasic)=>{
     const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
     const {username, auth_token} = session
     e.preventDefault();
     infoToast.show()
     setLoading(true)
-    const endpoint = `http://localhost:3000/monophasic/new/${username}/${auth_token}`;
+    const endpoint = `http://localhost:3000/triphasic/new/${username}/${auth_token}`;
     const options = {
-      body: monophasic,
+      body: triphasic,
       headers:{
         "content-type":"application/json",
       }
@@ -56,7 +56,7 @@ const useMonophasic = ()=>{
   }
 
 
-  return {loading, response, registerMonophasic}
+  return {loading, response, registerTriphasic}
 }
 
-export default useMonophasic;
+export default useTriphasic;

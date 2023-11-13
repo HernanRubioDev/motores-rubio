@@ -1,8 +1,8 @@
-import MonophasicForm from "./MonophasicForm";
+import TrihpasicForm from "./TriphasicForm";
 import useForm from "../../hooks/useForm";
 import {useEffect, useState } from "react";
-import MonophasicPreviewView from "./MonophasicPreviewView";
-const MonophasicMain = ({loading, registerMonophasic})=>{
+import TrihpasicPreviewView from "./TriphasicPreviewView";
+const TriphasicMain = ({loading, registerTriphasic})=>{
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const MonophasicMain = ({loading, registerMonophasic})=>{
     });
   }, [window.innerWidth]);
 
-  const initialMonophasic = {
+  const initialTrihpasic = {
     motor_type:'monophasic',
     brand:'',
     rpm:'',
@@ -22,7 +22,6 @@ const MonophasicMain = ({loading, registerMonophasic})=>{
     owner:'',
     slots:'',
     large:'',
-    uf:'',
     works_teps:'',
     work_laps:'',
     work_wire:'',
@@ -36,14 +35,13 @@ const MonophasicMain = ({loading, registerMonophasic})=>{
     observations:''
   }
 
-  const {form, handleChange, handleReset} = useForm(initialMonophasic);
-
+  const {form, handleChange, handleReset} = useForm(initialTrihpasic);
   return(
-    <div className="d-flex flex-grow-1 overflow-y-auto">
-      <MonophasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerMonophasic={registerMonophasic} />
-      <MonophasicPreviewView data={form}/>
-    </div>
-  )
+  <div className="d-flex flex-grow-1 overflow-y-auto">
+    <TrihpasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerTriphasic={registerTriphasic}/>
+    <TrihpasicPreviewView data={form}/>
+  </div>
+  );
 }
 
-export default MonophasicMain;
+export default TriphasicMain;

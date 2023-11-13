@@ -57,7 +57,7 @@ const useApi = ()=>{
       const res = await api.post(logoutUrl, options);
       if(res){
         localStorage.removeItem("auth_token");
-        navigate('/login');
+        navigate('/');
       }
     } catch (err) {
       console.error(err)

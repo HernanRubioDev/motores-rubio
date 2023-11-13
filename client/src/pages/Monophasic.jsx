@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import sessionContext from "../context/UserContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import InfoToast from "../components/InfoToast";
 import useMonophasic from "../hooks/useMonophasic";
@@ -17,7 +17,7 @@ const Monophasic = ()=>{
   },[session])
 
   return(
-  <main className='vh-100 d-flex flex-column overflow-hidden border'>
+  <main className='vh-100 d-flex flex-column overflow-hidden'>
     <Header />
     <MonophasicMain loading={loading} registerMonophasic={registerMonophasic}/>
     <InfoToast response={response} />

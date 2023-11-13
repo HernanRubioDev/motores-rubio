@@ -1,8 +1,8 @@
 const MonophasicPreviewView = ({data})=>{
   return(
     <div className="d-flex flex-column h-100 w-100 align-self-center px-lg-3 pt-1 overflow-y-auto">
-       <div className="w-100">
-        <table className="table table-responsive table-striped shadow">
+       <div className="w-100 ">
+        <table className="table table-responsive table-striped align-middle shadow">
           <thead className="text-center z-0">
             <tr className='table-secondary text-white'>
               <th colSpan='4' className='bg-secondary bg-opacity-75 text-white text-start'>Información</th>
@@ -15,7 +15,7 @@ const MonophasicPreviewView = ({data})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td>{data.brand || '-'}</td>
+              <td >{data.brand || '-'}</td>
               <td colSpan='2'>{data.model || '-'}</td>
               <td>{data.owner || '-'}</td>
             </tr>
@@ -47,9 +47,9 @@ const MonophasicPreviewView = ({data})=>{
           <tbody className="text-center">
             <tr>
               <td>{data.slots || '-'}</td>
-              <td>{data.majorDim || '-'}</td>
+              <td>{data.major_dim || '-'}</td>
               <td>{data.large || '-'}</td>
-              <td>{data.minorDim || '-'}</td>
+              <td>{data.minor_dim || '-'}</td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -64,9 +64,9 @@ const MonophasicPreviewView = ({data})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td>{data.workSteps || '-'}</td>
-              <td colSpan='2'>{data.workLaps || '-'}</td>
-              <td>{data.workWire || '-'}</td>
+              <td>{data.work_steps || '-'}</td>
+              <td colSpan='2'>{data.work_laps || '-'}</td>
+              <td>{data.work_wire || '-'}</td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -81,9 +81,9 @@ const MonophasicPreviewView = ({data})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td>{data.startSteps || '-'}</td>
-              <td colSpan='2'>{data.startLaps || '-'}</td>
-              <td>{data.startWire || '-'}</td>
+              <td>{data.start_steps || '-'}</td>
+              <td colSpan='2'>{data.start_laps || '-'}</td>
+              <td>{data.start_wire || '-'}</td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -100,7 +100,7 @@ const MonophasicPreviewView = ({data})=>{
             <tr>
               <td>{data.voltage || '-'}</td>
               <td colSpan='2'>{data.connection || '-'}</td>
-              <td>{data.windingType || '-'}</td>
+              <td>{data.winding_type || '-'}</td>
             </tr>
           </tbody>
           <thead className="text-tart  z-0">

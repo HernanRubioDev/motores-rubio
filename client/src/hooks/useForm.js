@@ -10,7 +10,12 @@ const useForm = (initialForm)=>{
     });
   }
 
-  return {form, handleChange, setForm}
+  const handleReset = ()=>{
+    setForm(initialForm)
+  }
+  
+
+  return {form, handleChange, handleReset, setForm}
 }
 
 export default useForm;
