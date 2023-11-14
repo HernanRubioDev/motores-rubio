@@ -1,11 +1,14 @@
 const {pool} = require("../../db");
 
-const getMonophasic = async(monophasic)=>{
-	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations} = monophasic
+const getMonophasic = async(monophasic, id_user)=>{
+	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large} = monophasic
+
+	const query = `SELECT * FROM monophasics WHERE brand LIKE '%${brand}' AND rpm LIKE '%${rpm}' AND minor_dim LIKE '%${minor_dim}' AND model LIKE '%${model}' AND hp LIKE '%${hp}' AND major_dim LIKE '%${major_dim}' AND owner LIKE '%${owner}' AND slots LIKE '%${slots}' AND large LIKE '%${large}' AND id_user=${parseInt(id_user)}`;
 	try {
-		
+		const res = await pool.query(query)
+		return res
 	} catch (error) {
-		
+		return null
 	}
 }
 

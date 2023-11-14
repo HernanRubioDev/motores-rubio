@@ -2,16 +2,19 @@ const { setMonophasic, updateMonophasic, deleteMonophasic, getMonophasic } = req
 const { getUserByUsername } = require("../models/userModel");
 
 const searchMonophasic= async(req, res)=>{
+	const {username} = req.params
 	const monophasic = req.query
 	try {
-		const response = await getMonophasic(monophasic);
+		const user = await getUserByUsername(username);
+		const id_user = user.rows[0].id_user
+		const response = await getMonophasic(monophasic, id_user);
 		switch (true) {
 			case response.rowCount !== 0:
 				res.json({status:200, motors: response.rows})
 				break;
 		
 			case response.rowCount === 0:
-				res.json({status:404, body:"No se han encontrado motores.", success:false});
+				res.json({status:404, title:"Error", body:"No se han encontrado motores con esos datos.", success:false});
 				break;
 
 			default:
@@ -28,7 +31,7 @@ const registerMonophasic = async(req, res)=>{
 	const {username} = req.params
 	try {
 		const user = await getUserByUsername(username);
-		const id_user = user.rows[0].user_id;
+		const id_user = user.rows[0].id_user;
 		const response = await setMonophasic(monophasic, id_user);
 		switch (true) {
 			case response.rowCount !==0:

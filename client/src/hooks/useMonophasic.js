@@ -24,7 +24,7 @@ const useMonophasic = ()=>{
       }
     }
     try {
-      const res = await api.post(endpoint, options)
+      const res = await api.post(endpoint, options);
       switch (true) {
         
         case res.status === 201:
