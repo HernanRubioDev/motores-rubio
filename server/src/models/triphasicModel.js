@@ -1,22 +1,22 @@
 const {pool} = require("../../db");
 
 const getTriphasic = async(triphasic, id_user)=>{
-	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations} = triphasic
+	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large} = triphasic
+
+	const query = `SELECT * FROM triphasics WHERE brand LIKE '${brand}%' AND rpm LIKE '${rpm}%' AND minor_dim LIKE '${minor_dim}%' AND model LIKE '${model}%' AND hp LIKE '${hp}%' AND major_dim LIKE '${major_dim}%' AND owner LIKE '${owner}%' AND slots LIKE '${slots}%' AND large LIKE '${large}%' AND id_user=${parseInt(id_user)}`;
 	try {
-		const query = `SELECT * FROM triphasics WHERE brand LIKE '${brand}%' AND rpm LIKE '${rpm}%' AND minor_dim LIKE '${minor_dim}%' AND model LIKE '${model}%'AND hp LIKE '${hp}%' AND major_dim LIKE '%$6%' AND owner LIKE '%$7%' AND slots LIKE '%$8%' AND large LIKE '%$9%' AND voltage LIKE '%$10%' AND connection LIKE '%11%' AND winding_type LIKE '%$12%' AND observations LIKE '%$13%' AND id_user = $14`
-		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_user])
-		return res;
+		const res = await pool.query(query)
+		return res
 	} catch (error) {
-		console.log(error)
 		return null
 	}
 }
 
 const setTriphasic = async(triphasic, id_user)=>{
-  const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations} = triphasic
-  const query = "INSERT INTO triphasics  (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)"
+  const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, motor_type} = triphasic
+  const query = "INSERT INTO triphasics  (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)"
 	try {
-		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_user]);
+		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, motor_type, id_user]);
 		return res
 	} catch (error) {
 		return null

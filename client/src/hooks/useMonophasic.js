@@ -12,6 +12,7 @@ const useMonophasic = ()=>{
 
 
   const registerMonophasic = async(e, monophasic)=>{
+    console.log(monophasic)
     const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
     const {username, auth_token} = session
     e.preventDefault();

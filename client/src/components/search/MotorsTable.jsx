@@ -2,7 +2,6 @@
 import TableData from "./TableData";
 
 const MotorTable = ({setDataToEdit, handleDelete, motors, loading})=>{
-  console.log(motors)
   return(
     <div className="d-flex flex-column w-100 ms-3 mt-2 pe-3 overflow-y-auto "> 
       <table className="table table-responsive table-striped table-hover shadow-sm">

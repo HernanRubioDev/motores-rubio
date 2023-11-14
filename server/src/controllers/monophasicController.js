@@ -49,9 +49,9 @@ const registerMonophasic = async(req, res)=>{
 
 const editMonophasic = async (req, res)=>{
 	const monophasic = req.body
+	console.log(monophasic)
 	try {
 		const response = await updateMonophasic(monophasic);
-
 		switch (true) {
 			case response.rowCount !==0:
 				res.json({status:200, title:"Editado", body:"El motor fue editado con éxito.", success:true});

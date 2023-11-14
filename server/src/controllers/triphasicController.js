@@ -2,20 +2,19 @@ const { setTriphasic, updateTriphasic, deleteTriphasic, getTriphasic } = require
 const { getUserByUsername } = require("../models/userModel");
 
 const searchTriphasic= async(req, res)=>{
-	const triphasic = req.query
 	const {username} = req.params
+	const monophasic = req.query
 	try {
 		const user = await getUserByUsername(username);
-		id_user = user.rows[0].id_user
-		const response = await getTriphasic(triphasic, id_user);
-		console.log(response)
+		const id_user = user.rows[0].id_user
+		const response = await getTriphasic(monophasic, id_user);
 		switch (true) {
 			case response.rowCount !== 0:
 				res.json({status:200, motors: response.rows})
 				break;
 		
 			case response.rowCount === 0:
-				res.json({status:404, body:"No se han encontrado motores.", success:false});
+				res.json({status:404, title:"Error", body:"No se han encontrado motores con esos datos.", success:false});
 				break;
 
 			default:
@@ -45,7 +44,6 @@ const registerTriphasic = async(req, res)=>{
 				break;
 		}
 	} catch (error) {
-		console.log(error)
 		res.json({status: 500, title:"Error", body:"Inténtelo mas tarde.", success:false});
 	}
 }

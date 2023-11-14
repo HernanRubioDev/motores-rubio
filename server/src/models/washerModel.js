@@ -1,22 +1,24 @@
 const {pool} = require("../../db");
 
-const getWasher = async(washer)=>{
-	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations} = washer
+const getWasher = async(washer, id_user)=>{
+	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large} = washer
+	const query = `SELECT * FROM washers WHERE brand LIKE '${brand}%' AND rpm LIKE '${rpm}%' AND minor_dim LIKE '${minor_dim}%' AND model LIKE '${model}%' AND hp LIKE '${hp}%' AND major_dim LIKE '${major_dim}%' AND owner LIKE '${owner}%' AND slots LIKE '${slots}%' AND large LIKE '${large}%' AND id_user=${parseInt(id_user)}`;
 	try {
-		
+		const res = await pool.query(query)
+		return res
 	} catch (error) {
-		
+		return null
 	}
 }
 
 const setWasher = async(washer, id_user)=>{
-	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations} = washer
-	const query = "INSERT INTO washers (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30)"
+	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations, motor_type} = washer
+	console.log(motor_type)
+	const query = "INSERT INTO washers (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations, motor_type, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31)"
 	try {
-		const res = await pool.query(query, [brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations, id_user])
+		const res = await pool.query(query, [brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_steps, second_wash_work_laps, second_wash_work_wire, wash_start_steps, wash_start_laps, wash_start_wire, capacity, voltage, connection, winding_type, observations, motor_type, id_user])
 		return res
 	} catch (error) {
-		console.log(error)
 		return null
 	}
 }

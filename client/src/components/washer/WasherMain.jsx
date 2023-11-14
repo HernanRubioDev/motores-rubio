@@ -12,6 +12,7 @@ const WasherMain = ({loading, registerWasher})=>{
   }, [window.innerWidth]);
 
   const initialWasher = {
+    motor_type:'washer',
     brand:'',
     rpm:'',
     minor_dim:'',

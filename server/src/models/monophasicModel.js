@@ -3,7 +3,7 @@ const {pool} = require("../../db");
 const getMonophasic = async(monophasic, id_user)=>{
 	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large} = monophasic
 
-	const query = `SELECT * FROM monophasics WHERE brand LIKE '%${brand}' AND rpm LIKE '%${rpm}' AND minor_dim LIKE '%${minor_dim}' AND model LIKE '%${model}' AND hp LIKE '%${hp}' AND major_dim LIKE '%${major_dim}' AND owner LIKE '%${owner}' AND slots LIKE '%${slots}' AND large LIKE '%${large}' AND id_user=${parseInt(id_user)}`;
+	const query = `SELECT * FROM monophasics WHERE brand LIKE '${brand}%' AND rpm LIKE '${rpm}%' AND minor_dim LIKE '${minor_dim}%' AND model LIKE '${model}%' AND hp LIKE '${hp}%' AND major_dim LIKE '${major_dim}%' AND owner LIKE '${owner}%' AND slots LIKE '${slots}%' AND large LIKE '${large}%' AND id_user=${parseInt(id_user)}`;
 	try {
 		const res = await pool.query(query)
 		return res
@@ -13,10 +13,10 @@ const getMonophasic = async(monophasic, id_user)=>{
 }
 
 const setMonophasic = async(monophasic, id_user)=>{
-	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations} = monophasic
-  const query = "INSERT INTO  monophasics (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22)"
+	const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations, motor_type} = monophasic
+  const query = "INSERT INTO  monophasics (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations, motor_type , id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23)"
 	try {
-		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations, id_user]);
+		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, motor_start, uf, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations, motor_type, id_user]);
 		return res
 	} catch (error) {
 		return null

@@ -7,6 +7,7 @@ CREATE TABLE users (
 	auth_token VARCHAR(60) );
 
 CREATE TABLE monophasics (
+  motor_type VARCHAR(20) NOT NULL,
   id_monophasic SERIAL PRIMARY KEY,
   brand VARCHAR(20),
   rpm VARCHAR(20),
@@ -33,6 +34,7 @@ CREATE TABLE monophasics (
 );
 
 CREATE TABLE triphasics (
+  motor_type VARCHAR(20) NOT NULL,
   id_triphasic SERIAL PRIMARY KEY,
   brand varchar(20),
   rpm varchar(20),
@@ -54,6 +56,7 @@ CREATE TABLE triphasics (
 );
 
 CREATE TABLE washers (
+  motor_type VARCHAR(20) NOT NULL,
   id_washer SERIAL PRIMARY KEY,
   brand VARCHAR(20),
   rpm VARCHAR(20),

@@ -9,7 +9,6 @@ const useMotor = ()=>{
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState([])
   const {session, handleSession} = useContext(sessionContext)
-  const [dataToEdit, setDataToEdit] = useState(null);
   const [motorToDelete, setMotorToDelete] = useState(null);
   const [motors, setMotors] = useState([])
 
@@ -52,7 +51,51 @@ const useMotor = ()=>{
     }
     setLoading(false)
   }
-  return {loading, response, motors, dataToEdit, setDataToEdit, motorToDelete, setMotorToDelete, getMotor}
+
+  const editMotor = async (e, motor)=>{
+    const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
+    e.preventDefault();
+    const {motor_type} = motor
+    const {username, auth_token} = session
+    const endpoint = `http://localhost:3000/${motor_type}/edit/${username}/${auth_token}`
+    const options = {
+      body: motor,
+      headers:{
+        "content-type":"application/json",
+      }
+    }
+    try {
+      const res = await api.patch(endpoint, options);
+      switch (true) {
+        case res.status === 200:
+          setResponse(res)
+          infoToast.show()
+          break;
+
+        case res.status === 400:
+          setErrors(res.validations);
+          break;
+ // agregar validacion 401 de autenticacion
+        case res.status === 500:
+          setResponse(res)
+          infoToast.show()
+          break;
+
+        default:
+          setResponse({title:"Error", body:"Parece que ha ocurrido un error. Inténtelo mas tarde.", success:false})
+          infoToast.show()
+          break;
+      }
+      
+    } catch (error) {
+      setResponse({title:"Error", body:"Parece que ha ocurrido un error. Inténtelo mas tarde.", success:false})
+      infoToast.show()
+    }
+    setLoading(false)
+  }
+
+ 
+  return {loading, response, motors, motorToDelete, setMotorToDelete, getMotor, editMotor}
 }
 
 export default useMotor;
