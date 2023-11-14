@@ -2,7 +2,6 @@ const { getAuth } = require('../models/userModel');
 
 const securityMiddleware = async(req, res, next)=>{
 	const {username, auth_token} = req.params
-
   try {
     const auth = await getAuth(username, auth_token);
     switch (true) {

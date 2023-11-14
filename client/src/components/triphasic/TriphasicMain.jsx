@@ -12,7 +12,6 @@ const TriphasicMain = ({loading, registerTriphasic})=>{
   }, [window.innerWidth]);
 
   const initialTrihpasic = {
-    motor_type:'monophasic',
     brand:'',
     rpm:'',
     minor_dim:'',

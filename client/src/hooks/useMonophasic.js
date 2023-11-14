@@ -15,7 +15,6 @@ const useMonophasic = ()=>{
     const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
     const {username, auth_token} = session
     e.preventDefault();
-    infoToast.show()
     setLoading(true)
     const endpoint = `http://localhost:3000/monophasic/new/${username}/${auth_token}`;
     const options = {

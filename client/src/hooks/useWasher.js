@@ -15,7 +15,7 @@ const useWasher = ()=>{
     const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
     const {username, auth_token} = session
     e.preventDefault();
-    infoToast.show()
+    console.log(washer)
     setLoading(true)
     const endpoint = `http://localhost:3000/washer/new/${username}/${auth_token}`;
     const options = {

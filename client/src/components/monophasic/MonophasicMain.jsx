@@ -12,7 +12,6 @@ const MonophasicMain = ({loading, registerMonophasic})=>{
   }, [window.innerWidth]);
 
   const initialMonophasic = {
-    motor_type:'monophasic',
     brand:'',
     rpm:'',
     minor_dim:'',

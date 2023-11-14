@@ -4,7 +4,7 @@ const sessionContext = createContext();
 
 const SessionProvider = ({children}) =>{
   const intialSession = {
-    auth_token: localStorage.getItem("auth_token") ? true : false,
+    auth_token: localStorage.getItem("auth_token") || false,
     username: localStorage.getItem("username") || '',
     name:localStorage.getItem("name") || '',
     surname:localStorage.getItem("surname") || ''

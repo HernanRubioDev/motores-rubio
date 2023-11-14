@@ -1,8 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
-import useApi from "../hooks/useApi";
+import useUser from "../hooks/useUser";
 
 const Header = ()=>{
-  const {logoutUser} = useApi()
+  const {logOutUser} = useUser()
   return(
     <header className="d-flex col-12 align-self-start">
       <nav className="navbar navbar-expand-lg bg-body-tertiary col-12">
@@ -52,13 +52,13 @@ const Header = ()=>{
                   {localStorage.getItem('auth_token') ? 
                   <>
                   <li className="nav-item">
-                    <button onClick={()=> logoutUser()} className="nav-link fw-medium text-body-secondary">Salir</button>
+                    <button onClick={()=> logOutUser()} className="nav-link fw-medium text-body-secondary">Salir</button>
                   </li>
                   </>
                   :
                   <>
                   <li className="nav-item">
-                    <NavLink to={'/login'} className='nav-link fw-medium text-body-secondary'>Ingresar</NavLink>
+                    <NavLink to={'/'} className='nav-link fw-medium text-body-secondary'>Ingresar</NavLink>
                   </li>
                   </>
                   }

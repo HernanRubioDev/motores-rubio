@@ -4,6 +4,7 @@ import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import InfoToast from "../components/InfoToast";
 import useWasher from "../hooks/useWasher";
+import WasherMain from "../components/washer/WasherMain";
 //import WasherMain from "../components/washer/WasherMain";
 
 const Washer = ()=>{
@@ -19,6 +20,8 @@ const Washer = ()=>{
   return(
     <main className='vh-100 d-flex flex-column overflow-hidden'>
       <Header />
+      <WasherMain loading={loading} registerWasher={registerWasher}/>
+      <InfoToast response={response}/>
     </main>
   );
 }

@@ -58,6 +58,7 @@ const useUser = ()=>{
   }
 
   const loginUser = async (e, user)=>{
+    const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     e.preventDefault();
     setLoading(true)
     const loginEndpoint = "http://localhost:3000/user/login";
@@ -94,16 +95,19 @@ const useUser = ()=>{
 
         case res.status === 500:
           setResponse(res)
+          alertModal.show()
           handleSession(false)
           break
 
         default:
           setResponse({status:res.status ,title:"Ups...", body:"Parece que ha ocurrido un error...intentelo mas tarde", success:false})
+          alertModal.show()
           handleSession(false)
           break;
       }
     } catch (error) {
       setResponse({status:res.status ,title:"Ups...", body:"Parece que ha ocurrido un error...intentelo mas tarde", success:false})
+      alertModal.show()
       handleSession(false)
       }
     setLoading(false)
@@ -112,7 +116,10 @@ const useUser = ()=>{
   const logOutUser = async ()=>{
     localStorage.removeItem("auth_token");
     localStorage.removeItem("username");
-    handleSession({auth_token:'', username:'', name:'', surname:''})
+    localStorage.removeItem("name");
+    localStorage.removeItem("surname");
+
+    handleSession({auth_token:false, username:'', name:'', surname:''})
   }
 
   return {errors, loading, response, registerUser, loginUser, logOutUser}
