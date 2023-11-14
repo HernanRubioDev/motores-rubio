@@ -7,6 +7,7 @@ import SearchMain from "../components/search/SearchMain";
 import useMotor from "../hooks/useMotor";
 import InfoToast from "../components/InfoToast";
 import MonophasicEditModal from "../components/monophasic/MonophasicEditModal";
+import TriphasicEditModal from "../components/triphasic/TriphasicEditModal";
 
 const Search = ()=>{
   const initialSearch = {
@@ -34,6 +35,7 @@ const Search = ()=>{
       <Header />
       <SearchMain form={form} loading={loading} motors={motors} handleChange={handleChange} handleReset={handleReset} setDataToEdit={setDataToEdit} getMotor={getMotor}/>
       <MonophasicEditModal dataToEdit={dataToEdit} setDataToEdit={setDataToEdit} handleEdit={handleEdit} editMotor={editMotor}/>
+      <TriphasicEditModal dataToEdit={dataToEdit} setDataToEdit={setDataToEdit} handleEdit={handleEdit} editMotor={editMotor} />
       <InfoToast response={response}/>
     </main>
   );

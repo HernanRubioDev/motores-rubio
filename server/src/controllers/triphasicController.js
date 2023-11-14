@@ -50,10 +50,8 @@ const registerTriphasic = async(req, res)=>{
 
 const editTriphasic = async (req, res)=>{
 	const triphasic = req.body
-
 	try {
 		const response = await updateTriphasic(triphasic);
-
 		switch (true) {
 			case response.rowCount !==0:
 				res.json({status:200, title:"Editado", body:"El motor fue editado con éxito.", success:true});

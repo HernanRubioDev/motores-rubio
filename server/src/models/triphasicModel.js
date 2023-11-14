@@ -14,7 +14,7 @@ const getTriphasic = async(triphasic, id_user)=>{
 
 const setTriphasic = async(triphasic, id_user)=>{
   const {brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, motor_type} = triphasic
-  const query = "INSERT INTO triphasics  (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)"
+  const query = "INSERT INTO triphasics  (brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, motor_type, id_user) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)"
 	try {
 		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, motor_type, id_user]);
 		return res
@@ -30,6 +30,7 @@ const updateTriphasic = async(triphasic)=>{
 		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_triphasic]);
 		return res
 	} catch (error) {
+		console.log(error)
 		return null
 	}
 }
