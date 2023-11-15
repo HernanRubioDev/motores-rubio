@@ -7,11 +7,11 @@ const SearchForm = ({loading, form, width, handleChange, handleReset, getMotor})
     <form onSubmit={(e)=>getMotor(e, form)} className={`bg-body-tertiary d-flex flex-column flex-shrink-0 align-items-center justify-content-between col-12 ${width < 992 ? 'offcanvas offcanvas-start' : 'show'} col-sm-5 col-md-4 col-lg-3`} id="offcanvasExample">
       <div className="d-flex w-100 position-relative">
         <button type="button" className="btn-close position-absolute mt-2 me-2 end-0 d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        <h5 className="fs-4 text-center fw-bold text-body-secondary w-100 py-2 bg-body-secondary">Buscar Motor</h5>
+        <h5 className="fs-4 text-center fw-bold text-body-tertiary w-100 py-2 bg-body-secondary">Buscar Motor</h5>
       </div>
       <div className=" d-flex flex-column flex-column flex-grow-1 justify-content-between border-bottom border-secondary-subtle overflow-y-auto px-4 w-100">
       <select onChange={(e)=> handleChange(e)} className="form-select mb-3 mt-2" aria-label="Default select example" name='motor_type' value={form.motor_type}>
-        <option value='' defaultChecked>Tipo de motor</option>
+        <option value="" disabled >Tipo de motor</option>
         <option value="monophasic">Monofásico</option>
         <option value="triphasic">Trifásico</option>
         <option value="washer">Lavarropas</option>

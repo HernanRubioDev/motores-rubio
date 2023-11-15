@@ -14,7 +14,7 @@ import ConfirmModal from "../components/ConfirmModal";
 
 const Search = ()=>{
   const initialSearch = {
-    motor_type:'',
+    motor_type:'monophasic',
     brand:'',
     rpm:'',
     minor_dim:'',

@@ -10,6 +10,7 @@ const useUser = ()=>{
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState([])
   const {handleSession} = useContext(sessionContext)
+  const {session} = useContext(sessionContext)
 
   const registerUser= async (e, user)=>{
     e.preventDefault();
@@ -114,6 +115,9 @@ const useUser = ()=>{
   }
 
   const logOutUser = async ()=>{
+    const {username, auth_token} = session
+    const endpoint = `http://localhost:3000/user/logout/${username}/${auth_token}`
+    const res = await api.patch(endpoint)
     localStorage.removeItem("auth_token");
     localStorage.removeItem("username");
     localStorage.removeItem("name");

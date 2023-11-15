@@ -45,7 +45,7 @@ const LoginForm = ({loading, errors, loginUser})=>{
             <div className="d-flex align-items-center position-relative">
               <i className="fas fa-key position-absolute ms-3 top-50 start-0 translate-middle text-secondary"/>
               <input onChange={(e)=>handleChange(e)} type={visibility} className={`${errors && errors.password && 'is-invalid'} login-input form-control`} placeholder='Ingrese su contraseña' name='password' value={form.password}/>
-              <i onClick={()=>handleVisibility()} className={`far ${visibility==="text" ? "fa-eye" : "fa-eye-slash"} fa-eye text-secondary position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer`}></i>
+              <i onClick={()=>handleVisibility()} className={`far ${visibility==="text" ? "fa-eye" : "fa-eye-slash"} fa-eye text-secondary position-absolute top-50 end-0 translate-middle-y ${errors && errors.password ? 'me-4 pe-1':'me-2'} cursor-pointer`}></i>
             <span className={`${errors && errors.password ? 'invalid-feedback' : 'valid-feedback'} position-absolute top-100 m-0`}> 
               {errors && errors.password}
             </span>

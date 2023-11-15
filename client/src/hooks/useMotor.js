@@ -8,7 +8,7 @@ const useMotor = ()=>{
   const api = helpHttp();
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState([])
-  const {session, handleSession} = useContext(sessionContext)
+  const {session} = useContext(sessionContext)
   const [motorToDelete, setMotorToDelete] = useState(null);
   const [motors, setMotors] = useState([])
 
@@ -137,7 +137,8 @@ const useMotor = ()=>{
           break;
 
         case res.status === 400:
-          setErrors(res.validations);
+          setResponse(res);
+          infoToast.show()
           break;
 
         case res.status === 401:

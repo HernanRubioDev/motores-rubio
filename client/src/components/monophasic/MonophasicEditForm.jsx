@@ -1,5 +1,17 @@
-const MonophasicEditForm = ({dataToEdit, handleEdit})=>{
+import { useEffect } from "react";
+
+const MonophasicEditForm = ({dataToEdit, setDataToEdit, handleEdit})=>{
   const {brand, model, owner, hp, rpm, start_type, uf, slots, major_dim, large, minor_dim, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations} = dataToEdit;
+  
+  useEffect(()=>{
+    if(dataToEdit.start_type==='plaqueta'){
+      setDataToEdit({
+        ...dataToEdit,
+        uf:'',
+      });
+    }
+  },[dataToEdit.start_type])
+
   return(
     <div className="d-flex flex-column h-100 w-100 align-self-center px-lg-3 pt-1 overflow-y-auto">
        <div className="w-100">
@@ -39,7 +51,7 @@ const MonophasicEditForm = ({dataToEdit, handleEdit})=>{
                   <option value='condensador'>Condensador</option>  
                 </select>
               </td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='uf' value={uf || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='uf' value={uf || ''} disabled={start_type==='plaqueta' ? true : false}/></td>
             </tr>
           </tbody>     
           <thead className="text-center z-0">

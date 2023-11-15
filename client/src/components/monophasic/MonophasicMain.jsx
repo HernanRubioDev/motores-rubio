@@ -36,11 +36,11 @@ const MonophasicMain = ({loading, registerMotor})=>{
     observations:''
   }
 
-  const {form, handleChange, handleReset} = useForm(initialMonophasic);
+  const {form, setForm, handleChange, handleReset} = useForm(initialMonophasic);
 
   return(
     <div className="d-flex flex-grow-1 overflow-y-auto">
-      <MonophasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerMotor={registerMotor} />
+      <MonophasicForm width={width} loading={loading} form={form} setForm={setForm} handleChange={handleChange} handleReset={handleReset} registerMotor={registerMotor} />
       <MonophasicPreviewView data={form}/>
     </div>
   )

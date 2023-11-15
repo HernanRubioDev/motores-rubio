@@ -1,7 +1,6 @@
-
 import TableData from "./TableData";
 
-const MotorTable = ({loading, motors, setDataToEdit, handleDelete, setMotorToDelete })=>{
+const MotorTable = ({motors, setDataToEdit, handleDelete, setMotorToDelete })=>{
   return(
     <div className="d-flex flex-column w-100 ms-3 mt-2 pe-3 overflow-y-auto "> 
       <table className="table table-responsive table-striped table-hover">
@@ -15,13 +14,14 @@ const MotorTable = ({loading, motors, setDataToEdit, handleDelete, setMotorToDel
           </tr>
         </thead >
         <tbody className="text-center">
-        {
-          motors === undefined || motors.length === 0?
-          
-          <tr><td colSpan='5'>Sin datos</td></tr>
-          :
-          motors.map((motor, index) => <TableData key={index} data={motor} setDataToEdit={setDataToEdit} handleDelete={handleDelete} setMotorToDelete={setMotorToDelete}/>)
-        }
+
+          {
+            motors === undefined || motors.length === 0?
+            <tr><td colSpan='5'>Sin datos</td></tr>
+            :
+            motors.map((motor, index) => <TableData key={index} data={motor} setDataToEdit={setDataToEdit} handleDelete={handleDelete} setMotorToDelete={setMotorToDelete}/>)
+          }
+        
         </tbody>
       </table>
     </div>

@@ -45,7 +45,7 @@ const loginUser = async(req, res)=>{
           res.json({status:500, title:"Ups...", body:"Parece que ha ocurrido un error...inténtelo mas tarde", success:false})
         }
         else {
-        res.json({status:403, validations:{password:"El usuario o la contraseña son incorrectos.", username:" "}})}
+        res.json({status:403, validations:{password:"El usuario o la contraseña son incorrectos.", username:""}})}
         break
 
       default:
@@ -58,7 +58,7 @@ const loginUser = async(req, res)=>{
 }
 
 const logoutUser = async(req, res)=>{
-  const {username, auth_token} = req.body
+  const {username, auth_token} = req.params
   try {
     const response = await deleteAuth(username, auth_token);
     switch (true) {
