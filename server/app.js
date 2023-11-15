@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
+const port = process.env.PORT_SERVER || 3000;
 
 const userRouter = require("./src/routes/userRoute");
 const monophasicRouter = require("./src/routes/monophasicRouter");
@@ -19,6 +20,6 @@ app.use("/monophasic", monophasicRouter);
 app.use("/triphasic", triphasicRouter);
 app.use("/washer", washerRouter);
 
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
     console.log("Escuchando en el puerto 3000.")
   })
