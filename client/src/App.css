@@ -5,6 +5,11 @@
 
 /*OPCIONES VAIRAS*/
 
+.left-menu{
+  width: 15rem;
+  min-width: 15rem;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }

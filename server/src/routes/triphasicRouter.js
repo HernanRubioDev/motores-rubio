@@ -10,6 +10,6 @@ triphasicRouter.post("/new/:username/:auth_token", securityMiddleware, registerT
 
 triphasicRouter.patch("/edit/:username/:auth_token", securityMiddleware, editTriphasic);
 
-triphasicRouter.delete("/delete/:username/:auth_token", securityMiddleware, removeTriphasic);
+triphasicRouter.delete("/delete/:username/:auth_token/:id_motor", securityMiddleware, removeTriphasic);
 
 module.exports = triphasicRouter;

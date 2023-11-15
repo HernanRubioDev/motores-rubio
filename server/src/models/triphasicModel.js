@@ -30,7 +30,6 @@ const updateTriphasic = async(triphasic)=>{
 		const res = await pool.query(query,[brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, steps, laps, wire, voltage, connection, winding_type, observations, id_triphasic]);
 		return res
 	} catch (error) {
-		console.log(error)
 		return null
 	}
 }

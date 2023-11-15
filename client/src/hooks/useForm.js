@@ -4,6 +4,7 @@ const useForm = (initialForm)=>{
 
   const [form, setForm] = useState(initialForm);
   const [dataToEdit, setDataToEdit] = useState(null);
+  const [motorToDelete, setMotorToDelete] = useState(null);
 
   const handleChange = (e)=>{
     setForm({
@@ -23,7 +24,7 @@ const useForm = (initialForm)=>{
   }
   
 
-  return {form, dataToEdit, handleChange, handleEdit, handleReset, setDataToEdit, setForm}
+  return {form, dataToEdit, motorToDelete, handleChange, handleEdit, handleReset, setForm, setDataToEdit, setMotorToDelete}
 }
 
 export default useForm;

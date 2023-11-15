@@ -10,6 +10,6 @@ washerRouter.post("/new/:username/:auth_token", securityMiddleware, registerWash
 
 washerRouter.patch("/edit/:username/:auth_token", securityMiddleware, editWasher);
 
-washerRouter.delete("/delete/:username/:auth_token", securityMiddleware, removeWasher);
+washerRouter.delete("/delete/:username/:auth_token/:id_motor", securityMiddleware, removeWasher);
 
 module.exports = washerRouter;

@@ -2,7 +2,7 @@ import TrihpasicForm from "./TriphasicForm";
 import useForm from "../../hooks/useForm";
 import {useEffect, useState } from "react";
 import TrihpasicPreviewView from "./TriphasicPreviewView";
-const TriphasicMain = ({loading, registerTriphasic})=>{
+const TriphasicMain = ({loading, registerMotor})=>{
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const TriphasicMain = ({loading, registerTriphasic})=>{
   const {form, handleChange, handleReset} = useForm(initialTrihpasic);
   return(
   <div className="d-flex flex-grow-1 overflow-y-auto">
-    <TrihpasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerTriphasic={registerTriphasic}/>
+    <TrihpasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerMotor={registerMotor}/>
     <TrihpasicPreviewView data={form}/>
   </div>
   );

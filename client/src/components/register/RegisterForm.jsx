@@ -2,8 +2,15 @@ import {NavLink} from 'react-router-dom';
 import '../../stylesheets/Register.css'
 import useForm from '../../hooks/useForm';
 import Loader from '../Loader';
+import { useState } from 'react';
 
 const RegisterForm = ({loading, errors, registerUser})=>{
+
+  const [visibility, setVisibility] = useState('password')
+  const handleVisibility =()=>{
+    if (visibility==="password") setVisibility("text")
+    else setVisibility("password")
+  }
 
   const initialRegister = {
     name:"",
@@ -61,7 +68,8 @@ const RegisterForm = ({loading, errors, registerUser})=>{
           <label htmlFor="passwordValidation" className="text-body-tertiary fw-semibold">Contraseña</label>
           <div className="d-flex align-items-center position-relative">
             <i className="fas fa-key position-absolute ms-3 top-50 start-0 translate-middle text-secondary"/>
-            <input onChange={(e)=>handleChange(e)} type="password" className={`${errors && errors.password && 'is-invalid'} register-input form-control`} id='passwordValidation' placeholder='Ingrese su contraseña' name='password' value={form.password}/>
+            <input onChange={(e)=>handleChange(e)} type={visibility} className={`${errors && errors.password && 'is-invalid'} register-input form-control`} id='passwordValidation' placeholder='Ingrese su contraseña' name='password' value={form.password}/>
+            <i onClick={()=>handleVisibility()} className={`far ${visibility==="text" ? "fa-eye" : "fa-eye-slash"} fa-eye text-secondary position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer`}></i>
           <span className={`${errors && errors.password ? 'invalid-feedback' : 'valid-feedback'} position-absolute top-100 m-0`}> 
             {errors && errors.password}
           </span>
@@ -71,7 +79,8 @@ const RegisterForm = ({loading, errors, registerUser})=>{
           <label htmlFor="repasswordValidation" className="text-body-tertiary fw-semibold">Contraseña</label>
           <div className="d-flex align-items-center position-relative">
             <i className="fas fa-key position-absolute ms-3 top-50 start-0 translate-middle text-secondary"/>
-            <input onChange={(e)=>handleChange(e)} type="password" className={`${errors && errors.re_password && 'is-invalid'} register-input form-control`} id='repasswordValidation' placeholder='Ingrese su contraseña' name='re_password' value={form.re_password}/>
+            <input onChange={(e)=>handleChange(e)} type={visibility} className={`${errors && errors.re_password && 'is-invalid'} register-input form-control`} id='repasswordValidation' placeholder='Ingrese su contraseña' name='re_password' value={form.re_password}/>
+            <i onClick={()=>handleVisibility()} className={`far ${visibility==="text" ? "fa-eye" : "fa-eye-slash"} fa-eye text-secondary position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer`}></i>
           <span className={`${errors && errors.re_password ? 'invalid-feedback' : 'valid-feedback'} position-absolute top-100 m-0`}> 
             {errors && errors.re_password}
           </span>

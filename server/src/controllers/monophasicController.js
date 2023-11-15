@@ -49,7 +49,6 @@ const registerMonophasic = async(req, res)=>{
 
 const editMonophasic = async (req, res)=>{
 	const monophasic = req.body
-	console.log(monophasic)
 	try {
 		const response = await updateMonophasic(monophasic);
 		switch (true) {
@@ -68,10 +67,10 @@ const editMonophasic = async (req, res)=>{
 }
 
 const removeMonophasic = async (req, res)=>{
-	const {id_monophasic} = req.body
+	const {id_motor} = req.params
 
 	try {
-		const response = await deleteMonophasic(id_monophasic);
+		const response = await deleteMonophasic(id_motor);
 
 		switch (true) {
 			case response.rowCount !==0:

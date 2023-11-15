@@ -1,7 +1,6 @@
 import WasherEditForm from "./WasherEditForm";
 
-const WasherEditModal = ({data, handleEdit, setDataToEdit})=>{
-
+const WasherEditModal = ({dataToEdit, setDataToEdit, handleEdit, editMotor})=>{
   return(
     <div className="modal fade" id="washer" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div className="modal-dialog modal-fullscreen">
@@ -11,11 +10,11 @@ const WasherEditModal = ({data, handleEdit, setDataToEdit})=>{
             <button onClick={()=>setDataToEdit(null)} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
-            {data ? <WasherEditForm data={data} handleEdit={handleEdit}/> : ''}
+            {dataToEdit ? <WasherEditForm dataToEdit={dataToEdit} handleEdit={handleEdit}/> : ''}
           </div>
           <div className="modal-footer">
-            <button onClick={()=>setDataToEdit(null)} type="button" className="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-            <button onClick={()=>handleEdit(data)} type="button" className="btn btn-warning">Editar</button>
+            <button onClick={()=>setDataToEdit(null)} type="button" className="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"><i className="fas fa-ban me-2"></i>Cancelar</button>
+            <button onClick={(e)=>editMotor(e, dataToEdit)} type="button" className="btn btn-primary"><i className="fas fa-pencil-alt me-2"></i>Editar</button>
           </div>
         </div>
       </div>

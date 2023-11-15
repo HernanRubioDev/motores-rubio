@@ -3,14 +3,14 @@ import sessionContext from "../context/UserContext";
 import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import TriphasicMain from "../components/triphasic/TriphasicMain";
-import useTriphasic from "../hooks/useTriphasic";
 import InfoToast from "../components/InfoToast";
+import useMotor from "../hooks/useMotor";
 
 const Triphasic = ()=>{
 
   const navigate = useNavigate();
   const {session} = useContext(sessionContext)
-  const {loading, response, registerTriphasic} = useTriphasic()
+  const {loading, response, registerMotor} = useMotor();
   
   useEffect(()=>{
     if(!session.auth_token) navigate("/")
@@ -19,7 +19,7 @@ const Triphasic = ()=>{
   return(
   <main className='vh-100 d-flex flex-column overflow-hidden'>
     <Header />
-    <TriphasicMain loading={loading} registerTriphasic={registerTriphasic}/>
+    <TriphasicMain loading={loading} registerMotor={registerMotor}/>
     <InfoToast response={response} />
   </main>
   );

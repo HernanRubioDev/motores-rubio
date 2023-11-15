@@ -69,11 +69,10 @@ const editWasher = async (req, res)=>{
 }
 
 const removeWasher = async (req, res)=>{
-	const {id_washer} = req.body
-	const {username} = req.params
+	const {id_motor} = req.params
 	try {
-		const user = await getUserByUsername(username);
-		const response = await deleteWasher(id_washer, user);
+
+		const response = await deleteWasher(id_motor);
 
 		switch (true) {
 			case response.rowCount !==0:

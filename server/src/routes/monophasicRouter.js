@@ -10,6 +10,6 @@ monophasicRouter.post("/new/:username/:auth_token", securityMiddleware, register
 
 monophasicRouter.patch("/edit/:username/:auth_token", securityMiddleware, editMonophasic);
 
-monophasicRouter.delete("/delete/:username/:auth_token", securityMiddleware, removeMonophasic);
+monophasicRouter.delete("/delete/:username/:auth_token/:id_motor", securityMiddleware, removeMonophasic);
 
 module.exports = monophasicRouter;

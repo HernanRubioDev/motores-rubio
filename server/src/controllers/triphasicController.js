@@ -68,10 +68,10 @@ const editTriphasic = async (req, res)=>{
 }
 
 const removeTriphasic = async (req, res)=>{
-	const {id_triphasic} = req.body
+	const {id_motor} = req.params
 
 	try {
-		const response = await deleteTriphasic(id_triphasic);
+		const response = await deleteTriphasic(id_motor);
 
 		switch (true) {
 			case response.rowCount !==0:

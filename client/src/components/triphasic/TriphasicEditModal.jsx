@@ -13,8 +13,8 @@ const TriphasicEditModal = ({dataToEdit, setDataToEdit, handleEdit, editMotor})=
             {dataToEdit !== null ? <TriphasicEditForm dataToEdit={dataToEdit} handleEdit={handleEdit}/> : ''}
           </div>
           <div className="modal-footer">
-            <button onClick={()=>setDataToEdit(null)} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button onClick={(e)=>editMotor(e, dataToEdit)} type="button" className="btn btn-warning">Editar</button>
+            <button onClick={()=>setDataToEdit(null)} type="button" className="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"><i className="fas fa-ban me-2"></i>Cancelar</button>
+            <button onClick={(e)=>editMotor(e, dataToEdit)} type="button" className="btn btn-primary"><i className="fas fa-pencil-alt me-2"></i>Editar</button>
           </div>
         </div>
       </div>

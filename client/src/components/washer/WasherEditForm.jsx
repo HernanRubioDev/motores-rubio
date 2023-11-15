@@ -1,5 +1,5 @@
-const WasherEditForm = ({data, handleEdit})=>{
-  const { brand,rpm,minor_dim,model,hp,major_dim,owner,slots,large,spinWorkSteps,spinWorkLaps,spinWorkWire,spinStartSteps,spinStartLaps,spinStartWire,firstWashWorkSteps,firstWashWorkLaps,firstWashWorkWire,secondWashWorkWire,secondWashWorkSteps,secondWashWorkLaps,washStartSteps,washStartLaps,washStartWire,voltage,connection,windingType,capacity,observations} = data
+const WasherEditForm = ({dataToEdit, handleEdit})=>{
+  const { brand, rpm, minor_dim, model, hp, major_dim, owner, slots, large, spin_work_steps, spin_work_laps, spin_work_wire, spin_start_steps, spin_start_laps, spin_start_wire, first_wash_work_steps, first_wash_work_laps, first_wash_work_wire, second_wash_work_wire, second_wash_work_steps,second_wash_work_laps, wash_start_steps, wash_start_laps, wash_start_wire, voltage, connection, winding_type, capacity, observations} = dataToEdit
   return(
     <div className="d-flex flex-column h-100 w-100 align-self-center px-lg-3 pt-1 overflow-y-auto">
        <div className="w-100">
@@ -16,9 +16,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='brand' value={brand}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='model' value={model}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='owner' value={owner}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='brand' value={brand || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='model' value={model || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='owner' value={owner || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -30,9 +30,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='hp' value={hp}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='rpm' value={rpm}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='large' value={large}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='hp' value={hp || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='rpm' value={rpm || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='large' value={large || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -44,9 +44,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='slots' value={slots}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='major_dim' value={major_dim}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='minor_dim' value={minor_dim}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='slots' value={slots || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='major_dim' value={major_dim || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='minor_dim' value={minor_dim || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -61,9 +61,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spinWorkSteps' value={spinWorkSteps}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spinWorkLaps' value={spinWorkLaps}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spinWorkWire' value={spinWorkWire}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spin_work_steps' value={spin_work_steps || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spin_work_laps' value={spin_work_laps || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spin_work_wire' value={spin_work_wire || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -78,9 +78,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spinStartSteps' value={spinStartSteps}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spinStartLaps' value={spinStartLaps}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spinStartWire' value={spinStartWire}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spin_start_steps' value={spin_start_steps || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spin_start_laps' value={spin_start_laps || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='spin_start_wire' value={spin_start_wire || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center z-0">
@@ -95,9 +95,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='firstWashWorkSteps' value={firstWashWorkSteps}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='firstWashWorkLaps' value={firstWashWorkLaps}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='firstWashWorkWire' value={firstWashWorkWire}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='first_wash_work_steps' value={first_wash_work_steps || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='first_wash_work_laps' value={first_wash_work_laps || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='first_wash_work_wire' value={first_wash_work_wire || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -112,9 +112,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='secondWashWorkSteps' value={secondWashWorkSteps}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='secondWashWorkLaps' value={secondWashWorkLaps}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='secondWashWorkWire' value={secondWashWorkWire}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='second_wash_work_steps' value={second_wash_work_steps || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='second_wash_work_laps' value={second_wash_work_laps || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='second_wash_work_wire' value={second_wash_work_wire || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -129,9 +129,9 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='washStartSteps' value={washStartSteps}/></td>
-              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='washStartLaps' value={washStartLaps}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='washStartWire' value={washStartWire}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='wash_start_steps' value={wash_start_steps || ''}/></td>
+              <td colSpan='2'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='wash_start_laps' value={wash_start_laps || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='wash_start_wire' value={wash_start_wire || ''}/></td>
             </tr>
           </tbody>     
           <thead className="text-center  z-0">
@@ -147,10 +147,10 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='voltage' value={voltage}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='connection' value={connection}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='windingType' value={windingType}/></td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='capacity' value={capacity}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='voltage' value={voltage || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='connection' value={connection || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='winding_type' value={winding_type || ''}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='capacity' value={capacity || ''}/></td>
             </tr>
           </tbody>
           <thead className="text-center  z-0">
@@ -160,7 +160,7 @@ const WasherEditForm = ({data, handleEdit})=>{
           </thead >
           <tbody className="text-center">
             <tr>
-              <td colSpan='4'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='observations' value={observations}/></td>
+              <td colSpan='4'><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='observations' value={observations || ''}/></td>
             </tr>
           </tbody>       
         </table>

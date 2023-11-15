@@ -4,7 +4,7 @@ import {useEffect, useState } from "react";
 import MotorTable from "./MotorsTable";
 
 
-const SearchMain = ({form, loading, motors, handleChange, handleReset, setDataToEdit, getMotor})=>{
+const SearchMain = ({form, loading, motors, handleChange, handleReset, setDataToEdit, setMotorToDelete, getMotor})=>{
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const SearchMain = ({form, loading, motors, handleChange, handleReset, setDataTo
   return(
     <div className="d-flex flex-grow-1 overflow-y-auto">
       <SearchForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} getMotor={getMotor} />
-      <MotorTable motors={motors} setDataToEdit={setDataToEdit}/>
+      <MotorTable motors={motors} setDataToEdit={setDataToEdit} setMotorToDelete={setMotorToDelete}/>
     </div>
   )
 }

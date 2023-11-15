@@ -120,6 +120,8 @@ const useUser = ()=>{
     localStorage.removeItem("surname");
 
     handleSession({auth_token:false, username:'', name:'', surname:''})
+
+    navigate("/")
   }
 
   return {errors, loading, response, registerUser, loginUser, logOutUser}

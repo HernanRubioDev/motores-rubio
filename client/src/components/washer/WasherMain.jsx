@@ -2,7 +2,7 @@ import WasherForm from "./WasherForm";
 import useForm from "../../hooks/useForm";
 import {useEffect, useState } from "react";
 import WasherPreviewView from "../washer/WasherPreviewView";
-const WasherMain = ({loading, registerWasher})=>{
+const WasherMain = ({loading, registerMotor})=>{
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const WasherMain = ({loading, registerWasher})=>{
   const {form, handleChange, handleReset} = useForm(initialWasher);
   return(
   <div className="d-flex flex-grow-1 overflow-y-auto">
-    <WasherForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerWasher={registerWasher}/>
+    <WasherForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerMotor={registerMotor}/>
     <WasherPreviewView data={form}/>
   </div>
   );

@@ -1,9 +1,9 @@
 import Loader from "../Loader";
 
-const WasherForm = ({width, form, loading, handleChange, handleReset, registerWasher})=>{
+const WasherForm = ({width, form, loading, handleChange, handleReset, registerMotor})=>{
   return(
     <>
-    <form onSubmit={(e)=>registerWasher(e, form)} className={`shadow bg-body-tertiary d-flex flex-column flex-shrink-0 align-items-center justify-content-between col-12 ${width < 992 ? 'offcanvas offcanvas-start' : 'show'} col-sm-5 col-md-4 col-lg-3`}  id="offcanvasExample">
+    <form onSubmit={(e)=>registerMotor(e, form)} className={`left-menu bg-body-tertiary d-flex flex-column flex-shrink-0 align-items-center justify-content-between col-12 ${width < 992 ? 'offcanvas offcanvas-start' : 'show'} col-sm-5 col-md-4 col-lg-3`}  id="offcanvasExample">
       <div className="d-flex w-100 position-relative">
         <button type="button" className="btn-close position-absolute mt-2 me-2 end-0 d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         <h5 className="fs-4 text-center fw-bold text-body-secondary bg-body-secondary w-100 py-2">Nuevo Lavarropas</h5>
@@ -53,8 +53,14 @@ const WasherForm = ({width, form, loading, handleChange, handleReset, registerWa
         {loading ? 
         <Loader /> : 
         <>
-        <input type="submit" className="btn btn-sm btn-success w-50 my-2 mx-3" value='Agregar'/>
-        <input type="reset" onClick={()=>handleReset()} className="btn btn-sm btn-danger w-50 my-2 mx-3" value='Limpiar'/>
+        <div className="w-50 my-2 mx-2 position-relative">
+          <input type="submit" className="btn btn-sm btn-success w-100" value="Agregar"/>
+          <i className="fas fa-plus me-1 position-absolute top-50 start-0 translate-middle-y ms-4 text-white"></i>
+        </div>
+        <div className="w-50 my-2 mx-2 position-relative">
+         <input type="reset" onClick={()=>handleReset()} className="btn btn-sm btn-danger w-100" value="Limpiar"/>
+         <i className="fas fa-eraser me-2 position-absolute top-50 start-0 translate-middle-y ms-4 text-white"></i>
+        </div>
         </>
         }
       </div>

@@ -3,7 +3,7 @@ const MonophasicEditForm = ({dataToEdit, handleEdit})=>{
   return(
     <div className="d-flex flex-column h-100 w-100 align-self-center px-lg-3 pt-1 overflow-y-auto">
        <div className="w-100">
-        <table className="table table-responsive table-striped shadow">
+        <table className="table table-responsive table-striped">
           <thead className="text-center z-0">
             <tr className='table-secondary text-white'>
               <th colSpan='4' className='bg-secondary text-white text-start'>Información</th>

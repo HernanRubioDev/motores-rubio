@@ -2,7 +2,7 @@ import MonophasicForm from "./MonophasicForm";
 import useForm from "../../hooks/useForm";
 import {useEffect, useState } from "react";
 import MonophasicPreviewView from "./MonophasicPreviewView";
-const MonophasicMain = ({loading, registerMonophasic})=>{
+const MonophasicMain = ({loading, registerMotor})=>{
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const MonophasicMain = ({loading, registerMonophasic})=>{
 
   return(
     <div className="d-flex flex-grow-1 overflow-y-auto">
-      <MonophasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerMonophasic={registerMonophasic} />
+      <MonophasicForm width={width} loading={loading} form={form} handleChange={handleChange} handleReset={handleReset} registerMotor={registerMotor} />
       <MonophasicPreviewView data={form}/>
     </div>
   )

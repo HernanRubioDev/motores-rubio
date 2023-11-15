@@ -1,10 +1,10 @@
 
 import TableData from "./TableData";
 
-const MotorTable = ({setDataToEdit, handleDelete, motors, loading})=>{
+const MotorTable = ({loading, motors, setDataToEdit, handleDelete, setMotorToDelete })=>{
   return(
     <div className="d-flex flex-column w-100 ms-3 mt-2 pe-3 overflow-y-auto "> 
-      <table className="table table-responsive table-striped table-hover shadow-sm">
+      <table className="table table-responsive table-striped table-hover">
         <thead className="text-center sticky-top z-0">
           <tr>
             <th scope="col">Marca</th>
@@ -20,7 +20,7 @@ const MotorTable = ({setDataToEdit, handleDelete, motors, loading})=>{
           
           <tr><td colSpan='5'>Sin datos</td></tr>
           :
-          motors.map((motor, index) => <TableData key={index} setDataToEdit={setDataToEdit} handleDelete={handleDelete} data={motor}/>)
+          motors.map((motor, index) => <TableData key={index} data={motor} setDataToEdit={setDataToEdit} handleDelete={handleDelete} setMotorToDelete={setMotorToDelete}/>)
         }
         </tbody>
       </table>
