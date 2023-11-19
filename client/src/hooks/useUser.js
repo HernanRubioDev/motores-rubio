@@ -16,7 +16,7 @@ const useUser = ()=>{
     e.preventDefault();
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     setLoading(true)
-    const endpoint = "http://localhost:3000/user/register";
+    const endpoint = "https://motores-rubio.onrender.com/user/register";
     const options = {
       body: user,
       headers:{
@@ -62,7 +62,7 @@ const useUser = ()=>{
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     e.preventDefault();
     setLoading(true)
-    const loginEndpoint = "http://localhost:3000/user/login";
+    const loginEndpoint = "https://motores-rubio.onrender.com/user/login";
     const options = {
       body: user,
       headers: {
@@ -116,7 +116,7 @@ const useUser = ()=>{
 
   const logOutUser = async ()=>{
     const {username, auth_token} = session
-    const endpoint = `http://localhost:3000/user/logout/${username}/${auth_token}`
+    const endpoint = `https://motores-rubio.onrender.com/user/logout/${username}/${auth_token}`
     const res = await api.patch(endpoint)
     localStorage.removeItem("auth_token");
     localStorage.removeItem("username");

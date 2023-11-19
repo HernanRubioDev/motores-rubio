@@ -19,7 +19,7 @@ const useMotor = ()=>{
     const {username, auth_token} = session
 
     setLoading(true)
-    const endpoint = `http://localhost:3000/${motor_type}/new/${username}/${auth_token}`;
+    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/new/${username}/${auth_token}`;
     const options = {
       body: motor,
       headers:{
@@ -72,7 +72,7 @@ const useMotor = ()=>{
     e.preventDefault();
     const {username, auth_token} = session
     setLoading(true)
-    const endpoint = `http://localhost:3000/${motor_type}/get/${username}/${auth_token}/?motorType=${motor_type}&brand=${brand}&rpm=${rpm}&minor_dim=${minor_dim}&model=${model}&hp=${hp}&major_dim=${major_dim}&owner=${owner}&slots=${slots}&large=${large}`;
+    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/get/${username}/${auth_token}/?motorType=${motor_type}&brand=${brand}&rpm=${rpm}&minor_dim=${minor_dim}&model=${model}&hp=${hp}&major_dim=${major_dim}&owner=${owner}&slots=${slots}&large=${large}`;
     try {
       const res = await api.get(endpoint);
       switch (true) {
@@ -120,7 +120,7 @@ const useMotor = ()=>{
     e.preventDefault();
     const {motor_type} = motor
     const {username, auth_token} = session
-    const endpoint = `http://localhost:3000/${motor_type}/edit/${username}/${auth_token}`
+    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/edit/${username}/${auth_token}`
     const options = {
       body: motor,
       headers:{
@@ -173,7 +173,7 @@ const useMotor = ()=>{
     const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     const {username, auth_token} = session
-    const endpoint = `http://localhost:3000/${motor_type}/delete/${username}/${auth_token}/${id_motor}`
+    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/delete/${username}/${auth_token}/${id_motor}`
 
     try {
       const res = await api.remove(endpoint);
