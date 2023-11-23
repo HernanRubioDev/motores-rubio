@@ -36,7 +36,7 @@ const SearchForm = ({loading, form, width, handleChange, handleReset, getMotor})
         }
       </div>
     </form>
-    <button className="align-self-center border-0 bg-transparent d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><img  src="icons/open-arrow.svg" /></button>
+    <button className="align-self-center border-0 bg-transparent d-lg-none border border-priamry position-absolute" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><img  src="icons/open-arrow.svg" /></button>
     </>
   );
 }

@@ -8,8 +8,7 @@ const TableData = ({data, setDataToEdit, setMotorToDelete})=>{
     <td>{rpm}</td>
     <td>{large}</td>
     <td>
-      <button onClick={()=>setDataToEdit(data)} className="border-0 pe-2 bg-transparent" data-bs-toggle="modal" data-bs-target={`#${motor_type}`}><img className="m-o p-0" src="icons/edit.svg" /></button>
-      <button onClick={()=>setMotorToDelete(data)} className="border-0 ps-2 bg-transparent" data-bs-toggle="modal" data-bs-target="#ConfirmModal"><img className="m-o p-0" src="icons/delete.svg" /></button>
+      <button onClick={()=>setMotorToDelete(data)} className="border-0 w-50 bg-transparent" data-bs-toggle="modal" data-bs-target="#ConfirmModal"><img className="m-o p-0" src="icons/delete.svg" /></button>
     </td>
   </tr>
  );
