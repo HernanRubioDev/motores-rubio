@@ -30,7 +30,6 @@ const TriphasicMain = ({loading, registerMotor})=>{
     start_wire:'',
     voltage:'',
     connection:'',
-    start_type:'',
     winding_type:'',
     observations:''
   }
