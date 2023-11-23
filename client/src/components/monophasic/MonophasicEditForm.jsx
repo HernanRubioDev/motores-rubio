@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 
 const MonophasicEditForm = ({dataToEdit, setDataToEdit, handleEdit})=>{
-  const {brand, model, owner, hp, rpm, start_type, uf, slots, major_dim, large, minor_dim, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations} = dataToEdit;
-  
+  const {brand, model, owner, hp, rpm, motor_start, uf, slots, major_dim, large, minor_dim, work_steps, work_laps, work_wire, start_steps, start_laps, start_wire, voltage, connection, winding_type, observations} = dataToEdit;
   useEffect(()=>{
-    if(dataToEdit.start_type==='plaqueta'){
+    if(dataToEdit.motor_start==='plaqueta'){
       setDataToEdit({
         ...dataToEdit,
         uf:'',
       });
     }
-  },[dataToEdit.start_type])
+  },[dataToEdit.motor_start])
 
   return(
     <div className="d-flex flex-column h-100 w-100 align-self-center px-lg-3 pt-1 overflow-y-auto">
@@ -46,12 +45,12 @@ const MonophasicEditForm = ({dataToEdit, setDataToEdit, handleEdit})=>{
               <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='hp' value={hp || ''}/></td>
               <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='rpm' value={rpm || ''}/></td>
               <td>
-                <select onChange={(e)=> handleEdit(e)} className="form-select text-center bg-transparent" aria-label="Default select example" name='start_type' value={start_type}>
-                  <option value='plaqueta'>Plaqueta</option> 
-                  <option value='condensador'>Condensador</option>  
+                <select onChange={(e)=> handleEdit(e)} className="form-select text-center bg-transparent" aria-label="Default select example" name='motor_start' value={motor_start}>
+                  <option value={motor_start === "plaqueta" ? "plaqueta" : "condensador"}>{motor_start === "plaqueta" ? "plaqueta" : "condensador"}</option> 
+                  <option value={motor_start === "plaqueta" ? "condensador" : "plaqueta"}>{motor_start === "plaqueta" ? "condensador" : "plaqueta"}</option>  
                 </select>
               </td>
-              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='uf' value={uf || ''} disabled={start_type==='plaqueta' ? true : false}/></td>
+              <td><input onChange={(e)=>handleEdit(e)} className="form-control text-center bg-transparent border-0" type="text" placeholder="-" name='uf' value={uf || ''} disabled={motor_start==='plaqueta' ? true : false}/></td>
             </tr>
           </tbody>     
           <thead className="text-center z-0">

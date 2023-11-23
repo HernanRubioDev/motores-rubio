@@ -31,7 +31,7 @@ const MonophasicMain = ({loading, registerMotor})=>{
     start_wire:'',
     voltage:'',
     connection:'',
-    start_type:'',
+    motor_start:'plaqueta',
     winding_type:'',
     observations:''
   }

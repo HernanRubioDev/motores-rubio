@@ -4,13 +4,13 @@ import Loader from "../Loader";
 const MonophasicForm = ({width, form, loading, setForm, handleChange, handleReset, registerMotor})=>{
 
   useEffect(()=>{
-    if(form.start_type==='plaqueta'){
+    if(form.motor_start==='plaqueta'){
       setForm({
         ...form,
         uf: '',
       });
     }
-  },[form.start_type])
+  },[form.motor_start])
 
   return(
     <>
@@ -42,12 +42,12 @@ const MonophasicForm = ({width, form, loading, setForm, handleChange, handleRese
           <span className="text-danger text-opacity-75 fw-bold fs-5 position-absolute top-50 end-0 translate-middle-y me-1">*</span>
         </div>
         <input onChange={(e)=>handleChange(e)} className="form-control mb-3" type="text" placeholder="Modelo" name='model' value={form.model}/>
-        <select onChange={(e)=> handleChange(e)} className="form-select mb-3 mt-2" aria-label="Default select example" name='start_type'>
-          <option value='' defaultChecked disabled>Tipo de arranque</option>
+        <select onChange={(e)=> handleChange(e)} className="form-select mb-3 mt-2" aria-label="Default select example" name='motor_start'>
+          <option value='plaqueta' defaultChecked disabled>Tipo de arranque</option>
           <option value="plaqueta">Plaqueta</option>
           <option value="condensador">Condesador</option>
         </select>
-        {form.start_type === 'condensador' ? 
+        {form.motor_start === 'condensador' ? 
         <input onChange={(e)=>handleChange(e)} className="form-control mb-3" type="text" placeholder="Capacidad µF" name='uf' value={form.uf} />
         : 
         <input onChange={(e)=>handleChange(e)} className="form-control mb-3" type="text" placeholder="Capacidad µF" name='uf' value={form.uf} disabled/>

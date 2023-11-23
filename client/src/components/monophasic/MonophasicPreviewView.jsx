@@ -32,7 +32,7 @@ const MonophasicPreviewView = ({data})=>{
             <tr>
               <td>{data.hp || '-'}</td>
               <td >{data.rpm || '-'}</td>
-              <td >{data.start_type || 'plaqueta'}</td>
+              <td >{data.motor_start || 'plaqueta'}</td>
               <td>{data.uf || '-'}</td>
             </tr>
           </tbody>     
