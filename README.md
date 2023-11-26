@@ -11,10 +11,10 @@ REQUERIMIENTOS:
    - Baja de motores eléctricos
 
 TECNOLOGIAS
-   BACKEND:
+   - BACKEND:
       - NodeJs con Express
       
-   FRONTEND:
+   - FRONTEND:
       - JavaScript
       - ReactJs
       - Bootstrap
@@ -22,5 +22,5 @@ TECNOLOGIAS
    PERSISTENCIA:
       -PostgresSQL
       
-URL
+- URL
   - https://motoresrubio.onrender.com/
