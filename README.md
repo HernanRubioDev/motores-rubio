@@ -1,5 +1,5 @@
 DESCRIPCIÓN
-Sistema de gestión para talleres de motores eléctricos.
+   - Sistema de gestión para talleres de motores eléctricos.
 
 REQUERIMIENTOS:
    - Registro de usuarios.
