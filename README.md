@@ -20,7 +20,7 @@ TECNOLOGIAS
       - Bootstrap
 
    - PERSISTENCIA:
-      -PostgresSQL
+      - PostgresSQL
       
 - URL
   - https://motoresrubio.onrender.com/
