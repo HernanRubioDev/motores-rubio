@@ -1,5 +1,5 @@
 DESCRIPCIÓN:
-   - Sistema de gestión para talleres de motores eléctricos.
+   - Motores-Rubio es un sistema de gestión para talleres de bobinado que permite administrar los datos de los distintos tipos de motores eléctricos.
 
 REQUERIMIENTOS:
    - Registro de usuarios.
