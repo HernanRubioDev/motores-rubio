@@ -19,7 +19,7 @@ TECNOLOGIAS
       - ReactJs
       - Bootstrap
 
-   PERSISTENCIA:
+   - PERSISTENCIA:
       -PostgresSQL
       
 - URL
