@@ -1,4 +1,4 @@
-DESCRIPCIÓN
+DESCRIPCIÓN:
    - Sistema de gestión para talleres de motores eléctricos.
 
 REQUERIMIENTOS:
