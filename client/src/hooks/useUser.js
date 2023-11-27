@@ -16,7 +16,7 @@ const useUser = ()=>{
     e.preventDefault();
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     setLoading(true)
-    const endpoint = "https://motores-rubio.onrender.com/user/register";
+    const endpoint = "http://localhost:3000/user/register";
     const options = {
       body: user,
       headers:{
@@ -62,7 +62,7 @@ const useUser = ()=>{
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     e.preventDefault();
     setLoading(true)
-    const loginEndpoint = "https://motores-rubio.onrender.com/user/login";
+    const loginEndpoint = "http://localhost:3000/user/login";
     const options = {
       body: user,
       headers: {
@@ -86,24 +86,24 @@ const useUser = ()=>{
         
         case res.status === 401:
           setErrors(res.validations);
-          handleSession(false)
+          handleSession({auth_token:null, username:null, name:null, surname:null})
           break
         
         case res.status === 403:
           setErrors(res.validations);
-          handleSession(false)
+          handleSession({auth_token:null, username:null, name:null, surname:null})
           break
 
         case res.status === 500:
           setResponse(res)
           alertModal.show()
-          handleSession(false)
+          handleSession({auth_token:null, username:null, name:null, surname:null})
           break
 
         default:
           setResponse({status:res.status ,title:"Ups...", body:"Parece que ha ocurrido un error...intentelo mas tarde", success:false})
           alertModal.show()
-          handleSession(false)
+          handleSession({auth_token:null, username:null, name:null, surname:null})
           break;
       }
     } catch (error) {
@@ -117,14 +117,12 @@ const useUser = ()=>{
   const logOutUser = async ()=>{
     const {username, auth_token} = session
     const endpoint = `https://motores-rubio.onrender.com/user/logout/${username}/${auth_token}`
-    const res = await api.patch(endpoint)
     localStorage.removeItem("auth_token");
     localStorage.removeItem("username");
     localStorage.removeItem("name");
     localStorage.removeItem("surname");
-
-    handleSession({auth_token:false, username:'', name:'', surname:''})
-
+    handleSession({auth_token:null, username:null, name:null, surname:null})
+    await api.patch(endpoint)
     navigate("/")
   }
 

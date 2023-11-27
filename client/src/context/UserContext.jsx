@@ -4,10 +4,10 @@ const sessionContext = createContext();
 
 const SessionProvider = ({children}) =>{
   const intialSession = {
-    auth_token: localStorage.getItem("auth_token") || false,
-    username: localStorage.getItem("username") || '',
-    name:localStorage.getItem("name") || '',
-    surname:localStorage.getItem("surname") || ''
+    auth_token: localStorage.getItem("auth_token"),
+    username: localStorage.getItem("username"),
+    name: localStorage.getItem("name"),
+    surname: localStorage.getItem("surname")
   }
   const [session, setSession] = useState(intialSession);
   

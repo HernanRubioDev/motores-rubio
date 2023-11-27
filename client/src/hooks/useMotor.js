@@ -19,7 +19,7 @@ const useMotor = ()=>{
     const {username, auth_token} = session
 
     setLoading(true)
-    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/new/${username}/${auth_token}`;
+    const endpoint = `http://localhost:3000/${motor_type}/new/${username}/${auth_token}`;
     const options = {
       body: motor,
       headers:{
@@ -120,7 +120,7 @@ const useMotor = ()=>{
     e.preventDefault();
     const {motor_type} = motor
     const {username, auth_token} = session
-    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/edit/${username}/${auth_token}`
+    const endpoint = `http://localhost:3000/${motor_type}/edit/${username}/${auth_token}`
     const options = {
       body: motor,
       headers:{
@@ -173,7 +173,7 @@ const useMotor = ()=>{
     const infoToast = new bootstrap.Toast(document.getElementById("infoToast"))
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     const {username, auth_token} = session
-    const endpoint = `https://motores-rubio.onrender.com/${motor_type}/delete/${username}/${auth_token}/${id_motor}`
+    const endpoint = `http://localhost:3000/${motor_type}/delete/${username}/${auth_token}/${id_motor}`
 
     try {
       const res = await api.remove(endpoint);
