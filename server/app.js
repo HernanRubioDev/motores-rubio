@@ -29,4 +29,4 @@ app.listen(port, ()=>{
     const url = `https://motores-rubio.onrender.com/monophasic/get/hernanrubio/123456`
     fetch(url)
     .then(res => console.log(res))
-  }, 5000);
+  }, 840000);
