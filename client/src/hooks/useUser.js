@@ -16,7 +16,7 @@ const useUser = ()=>{
     e.preventDefault();
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     setLoading(true)
-    const endpoint = "http://localhost:3000/user/register";
+    const endpoint = "https://motores-rubio.onrender.com/user/register";
     const options = {
       body: user,
       headers:{
@@ -62,7 +62,7 @@ const useUser = ()=>{
     const alertModal = new bootstrap.Modal(document.getElementById("alertModal"))
     e.preventDefault();
     setLoading(true)
-    const loginEndpoint = "http://localhost:3000/user/login";
+    const loginEndpoint = "https://motores-rubio.onrender.com/user/login";
     const options = {
       body: user,
       headers: {
