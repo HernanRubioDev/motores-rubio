@@ -51,6 +51,7 @@ const { getUserByUsername } = require("../models/userModel");
 		const userRegEx = /^[a-zA-Z0-9 ._=]+$/g
 		const errors = {}
 		const res = await getUserByUsername(username);
+		console.log(res)
 		switch (true) {
 			case !username:
 				errors.username = "Este campo es obligatorio."
