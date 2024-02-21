@@ -50,7 +50,13 @@ const { getUserByUsername } = require("../models/userModel");
 	const usernameValidation = async (username) =>{
 		const userRegEx = /^[a-zA-Z0-9 ._=]+$/g
 		const errors = {}
-		const res = await getUserByUsername(username);
+		let res;
+		try {
+			res = await getUserByUsername(username);
+			
+		} catch (error) {
+			console.log(res)
+		}
 		console.log(res)
 		switch (true) {
 			case !username:
