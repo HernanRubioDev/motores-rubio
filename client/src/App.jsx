@@ -8,9 +8,11 @@ import Triphasic from './pages/Triphasic';
 import Washer from './pages/Washer';
 import ErrorPage from './pages/ErrorPage';
 import { SessionProvider } from './context/UserContext';
+import { helpHttp } from './helpers/helpHttp';
+
+const api = helpHttp();
 
 function App() {
-
   return (
     <SessionProvider>
       <Router>
