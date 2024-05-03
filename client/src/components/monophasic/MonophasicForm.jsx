@@ -77,11 +77,11 @@ const MonophasicForm = ({width, form, loading, setForm, handleChange, handleRese
         <>
         <div className="w-50 my-2 mx-2 position-relative">
           <input type="submit" className="btn btn-sm btn-success w-100" value="Agregar" disabled={!form.brand || !form.owner || !form.rpm || !form.large ? true : false}/>
-          <i className="fas fa-plus me-1 position-absolute top-50 start-0 translate-middle-y ms-4 text-white"></i>
+          <i className="fas fa-plus me-1 position-absolute top-50 start-0 translate-middle-y text-white ms-4"></i>
         </div>
         <div className="w-50 my-2 mx-2 position-relative">
          <input type="reset" onClick={()=>handleReset()} className="btn btn-sm btn-danger w-100" value="Limpiar"/>
-         <i className="fas fa-eraser me-2 position-absolute top-50 start-0 translate-middle-y ms-4 text-white"></i>
+         <i className="fas fa-eraser me-2 position-absolute top-50 start-0 translate-middle-y text-white ms-4"></i>
         </div>
         </>
         }
